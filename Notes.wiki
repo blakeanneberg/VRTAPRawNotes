@@ -188,7 +188,7 @@ e Conktop.google.com/access.remotedesktop.google.com/access.=
 === Layer 2: Data Link Layer ===
 * Protocols that allow computers to talk to each other locally
 * Protocol: Internet Protocol 
-==== Ethernet ===
+==== Ethernet ====
 1. Terms and Concepts
     * CSMA/CD (Carrier Sense Multiple Access with Collision Detection), Old and not used, computers all connect to a cable, and each device would send traffic on the wire. and would often have a Collision with two comptuers talking at the same time. 
     * Collision Domain: group of networked devices that will simultaneously detect voltage spike 
@@ -264,6 +264,33 @@ e Conktop.google.com/access.remotedesktop.google.com/access.=
 * CDMA 3G Code Division Multiple Access 
 * LTE 4G 5G Long Term Evolution
     * 5G upgrade backend hardware and some wireless bands in cities. 
+
+==== Layer 2 Devices and Services ====
+* Modem: modulator demodulator
+* Cabel Modem
+    * Layer 2 Protocol DOCSIS (Data over Cable Service, goes to cabel company) to ethernet
+* Fiber Optic Modem 
+    * Media converter
+    * Fiber Optic Ethernet to Copper Ethernet 
+* DSL Modem (Digital Subscriber Line) over phone lines, used audio outside range of human hearing, antiquated
+
+===== Traffic Shaping =====
+* VOIP vs video streaming: dropped packet will be noticed by VOIP
+* First Come First Serve: delays traffic
+* Traffic Shaping: Express lane prioritize Traffic, every other message is a priority. Done by adding special code in header infomation, or configure switch to give priority to certain VLANs. 
+    * Bandwith Management: Purchase 50mb from fiber optic ISP
+    * Quality of Service: 
+    * Flow Control: on switches for traffice sent efficiantly 
+
+===== Local Neighbor Discovery =====
+* Sends out messages on layer 2 as a router and I have capabilities and this is the port I am sending this message out on. Other devices send info back info. But only with Neighboring devices.  
+* Troubleshooing: see who is directly connected. 
+* LLDP: Link Layer Discovery Protocol for devices not Cisco based. 
+* CDP: Cisco Discovery Protocol, enabled on Cisco devices by default 
+    * Commands: `show cdp neighbor`
+* Security Issue: if someone attaches to device that is not autherizd could see global 
+
+
 
 === Layer 1: Physical Layer ===
 * Wireless 
