@@ -1,0 +1,882 @@
+e Conktop.google.com/access.remotedesktop.google.com/access.=
+    - [[#Network Concepts|Network Concepts]]
+        - [[#Network Concepts#OSI Model to Describe Network Operations|OSI Model to Describe Network Operations]]
+            - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 7: Application Layer|Layer 7: Application Layer]]
+            - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 6: Presentation Layer|Layer 6: Presentation Layer]]
+            - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 5: Session Layer|Layer 5: Session Layer]]
+            - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 4: Transport Layer|Layer 4: Transport Layer]]
+            - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 3: Network Layer|Layer 3: Network Layer]]
+            - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer|Layer 2: Data Link Layer]]
+                - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Wireless Ethernet Protols 802.11|Wireless Ethernet Protols 802.11]]
+            - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 1: Physical Layer|Layer 1: Physical Layer]]
+        - [[#Network Concepts#Encapsulation and the OSI Model|Encapsulation and the OSI Model]]
+        - [[#Network Concepts#Routing IP Traffic|Routing IP Traffic]]
+        - [[#Network Concepts#Binary|Binary]]
+        - [[#Network Concepts#Counting|Counting]]
+        - [[#Network Concepts#Converting Decimal to Binary|Converting Decimal to Binary]]
+        - [[#Network Concepts#Hexadecimal|Hexadecimal]]
+        - [[#Network Concepts#IP Addressing|IP Addressing]]
+            - [[#Network Concepts#IP Addressing#IPv4|IPv4]]
+            - [[#Network Concepts#IP Addressing#Classful vs Classless addressing|Classful vs Classless addressing]]
+            - [[#Network Concepts#IP Addressing#Address Types|Address Types]]
+            - [[#Network Concepts#IP Addressing#Ip Routing|Ip Routing]]
+            - [[#Network Concepts#IP Addressing#Tracert|Tracert]]
+        - [[#Network Concepts#CIDR Classless Inter-Domain Routing|CIDR Classless Inter-Domain Routing]]
+        - [[#Network Concepts#Private IP Addresses|Private IP Addresses]]
+        - [[#Network Concepts#Subnetting Basics|Subnetting Basics]]
+            - [[#Network Concepts#Subnetting Basics#Variable Length Subnet Masking VLSM|Variable Length Subnet Masking VLSM]]
+        - [[#Network Concepts#IPv6|IPv6]]
+            - [[#Network Concepts#IPv6#IPV6 Address Components|IPV6 Address Components]]
+            - [[#Network Concepts#IPv6#IPv4 Address Size|IPv4 Address Size]]
+            - [[#Network Concepts#IPv6#IPv6 Addresses|IPv6 Addresses]]
+            - [[#Network Concepts#IPv6#IPv6 Address Operation|IPv6 Address Operation]]
+            - [[#Network Concepts#IPv6#IPv6 Address Types|IPv6 Address Types]]
+            - [[#Network Concepts#IPv6#IPv6 Address Acquisitions|IPv6 Address Acquisitions]]
+            - [[#Network Concepts#IPv6#IPv6 DHCP|IPv6 DHCP]]
+            - [[#Network Concepts#IPv6#IPv6 Tunneling|IPv6 Tunneling]]
+        - [[#Network Concepts#Network Services|Network Services]]
+            - [[#Network Concepts#Network Services#Network Address Translation|Network Address Translation]]
+            - [[#Network Concepts#Network Services#Dynamic Host Configuration Protocol|Dynamic Host Configuration Protocol]]
+            - [[#Network Concepts#Network Services#Domain Name System|Domain Name System]]
+            - [[#Network Concepts#Network Services#Network Toplogies and Types|Network Toplogies and Types]]
+            - [[#Network Concepts#Network Services#Blank Area Networks|Blank Area Networks]]
+                - [[#Network Concepts#Network Services#Blank Area Networks#Network Classifications|Network Classifications]]
+            - [[#Network Concepts#Network Services#WAN Technologies|WAN Technologies]]
+            - [[#Network Concepts#Network Services#Virtualed Networks|Virtualed Networks]]
+        - [[#Network Concepts#Corporate and Data Center Architectures|Corporate and Data Center Architectures]]
+        - [[#Network Concepts#Cloud Services|Cloud Services]]
+            - [[#Network Concepts#Cloud Services#Public, Private, Hybrid, Community Clouds|Public, Private, Hybrid, Community Clouds]]
+            - [[#Network Concepts#Cloud Services#Software as a service|Software as a service]]
+            - [[#Network Concepts#Cloud Services#Platform as a service|Platform as a service]]
+            - [[#Network Concepts#Cloud Services#Infrastructure as a service|Infrastructure as a service]]
+            - [[#Network Concepts#Cloud Services#Desktop as a service|Desktop as a service]]
+        - [[#Network Concepts#Cloud Benefits|Cloud Benefits]]
+    - [[#Smart Hands Training|Smart Hands Training]]
+        - [[#Smart Hands Training#Switches|Switches]]
+        - [[#Smart Hands Training#Accessing a switch|Accessing a switch]]
+
+= Network Concepts =
+
+== OSI Model to Describe Network Operations ==
+
+=== Layer 7: Application Layer ===
+* Protocols
+    1. Hypertext Transfer Protocol http and https
+        - 
+    2. Data Transfer Protocols
+        - FTP, sftp and TrivialFTP for small file transfers, ServerMessageBlock SMB for windows shared drive from workstations to other work stations.  
+        - SMB:
+            - To mount a SMB drive you can "Map network drive" above drives A,B,C,D
+        - Email:
+            - POP3: Retrieve email from the server
+            - IMAP: Retrieve email from the server
+            - SMTP: Send email from the server
+    3. Authentication Protocols
+        - LDAP & LDAPs
+    5. Network Service Protocols
+        - Dynamic Host Configuration Protocol DHCP, giving workstation an IP address when plugged into the network.
+        - DHCP sends out 'offer message', containing:
+            - IP Address
+            - Subnet Mask
+            - Default Gateway
+            - DNS Server
+            - Other Information
+        - DHCP is accessed via command prompt 'ipconfig', delete records via 'ipconfig /release' or add IP via 'ipconfig /renew'
+        - DNS/Nameserver: translate IP address to human readable. :54
+        - DNS lookup on windows in CMD is nslookup
+        - NTP: UTC time
+    7. Network Management Protocols
+        -  Telnet & SSH
+        - Simple Network Management Protocol SNMP: allows devices to send simple messages back to server. - When SNMP server says 'walk the tree' it messages all devices on network with numbers called MIBs, management information base, to add to a table all the events happening on devices. 
+            - SNMP Trap: when something happens on device, it sends message to SNMP server saying an event happened.
+        - Syslog: mechanism to send logs on devices to a syslog server, so the event is recorded, like plugging something into a switch to make it active.
+        - RDP: Remote Desktop Protocol, access GUI interface of headless computers. 
+    8. Audio and Visual Protocols
+        - H.323: video and voice  
+        - SIP: VOIP phones, transfers voice to a VOIP gateway
+    10. Database Protocols 
+        - SQL Databases: 
+            * Servers
+                - mySQL: open source
+                - SQLnet: Oracle
+                - SQL Server: Microsoft
+            * Language on the server
+            * Protocol used to communicate across the network to access the database
+      
+
+=== Layer 6: Presentation Layer ===
+* Don't really use this layer
+* IBM created "Extended Binary Coded Decimal Interchange Code" EBCDIC as an alternative to ASCII
+
+=== Layer 5: Session Layer ===
+* Not important for networking
+
+=== Layer 4: Transport Layer===
+* Protocols
+    - Transmission Control Protocol TCP
+        * HTTP uses port 80 and HTTPS uses port 443
+        * Port 443 is used by SSL and TLS, which is the same thing.
+        * FTP port 20/21, sFTP port 22, and TrivialFTP port 69, SMB port 445 
+        * Responsible for building a session and maintaining two end points like client and server.  
+            - Initiates conversations
+            - TCP 3 Way Handshake:
+                1. SYN
+                2. SYN-ACK
+                3. ACK
+                4. Client ask for server to start sending website data
+                5. Server starts sending data back to Client
+                6. Fin (when all data is done sending)
+                7. FIN-ACK
+                8. FIN
+                9. FIN-ACK
+                10. Sometimes TCP Reset is sent and a RST commend will stop the conversation, either client, server or a firewall can send a RST
+         - User Datagram Protocol UDP
+            * No 3 way handshake
+            * no reliable communication
+            * no sequence numbers and no ack numbers
+            * Used for efficient data, but no way to make sure data is good. 
+    - Protocol Dependencies
+        * Protocols (ex HTTP, FTP, IMAP) have ports dedicated/assigned to, use a specific Transport Layer Protocol
+            - Most use TCP but LDAP uses TCP/UDP and TFTP uses UDP.
+
+* Port Numbers
+    - Total port numbers: 0 - 65,535 
+    - Server port numbers / Well Known / Registered Port Numbers
+        * Well Known 0 - 1023
+            - See list below of "Well Known Port Numbers"
+        * Registered 1024 - 49151
+            - These port numbers are for custom applications, both offical and unofficial
+    - Client Port Numbers / Ephemeral Port Numbers
+        - 49152 - 65525 
+        - These port numbers are created by the PC to identify the session that they are creating.   
+    
+      
+* Well Known / Common Port Numbers
+    - SSL/TLS which is the same thing:443
+    - FTP: 20/21, sFTP: 22, TrivialFTP: 69, SMB: 445 
+    - POP3: 110/995, IMAP: 143/993, SMTP 25/465
+    - LDAP: 389
+    - LDAPs: 636
+    - DHCP: 67/68 UDP  
+    - DNS: 53 TCP/UDP
+    - DNS over HTTPS, DoH: 443 
+    - NTP: 389
+    - Telnet: 23 TCP
+    - SSH: 22 TCP 
+    - SNMP: 161/162
+    - Syslog: 514
+    - RDP: 3389 3389
+    - H.323: 1719 TCP/UDP
+    - SIP: 5060/5061 TCP/UDP
+    - mySQL: 3306
+    - SWLnet: 1521
+    - SQL Server: 1433
+    - HTTP: 80
+    - HTTPs: 443
+    - FTP: 20, 21
+    - SSH: 22
+    - Telnet: 23      
+    - NTP: 123 UDP
+
+=== Layer 3: Network Layer ===
+* allows computers to communicate long distance across the network
+* Protocols
+    - Transmission Control Protocol TCP
+    - Internet Protocol IP
+* Addressing in IP
+
+=== Layer 2: Data Link Layer ===
+* Protocols that allow computers to talk to each other locally
+* Protocol: Internet Protocol 
+==== Ethernet ===
+1. Terms and Concepts
+    * CSMA/CD (Carrier Sense Multiple Access with Collision Detection), Old and not used, computers all connect to a cable, and each device would send traffic on the wire. and would often have a Collision with two comptuers talking at the same time. 
+    * Collision Domain: group of networked devices that will simultaneously detect voltage spike 
+    * Duplex and Speed
+        * Half Duplex: send info once at a time, like walki talki. 
+        * Full Duplex: both devices send communication at the same time.
+    * Ethernet Frame:
+        * Package of data, with datalink layer header. Is called a Protocall Data Unit PDU 
+| Desitnation Mac Address                    | Source Mac address | Type                                 | Data (Layer 2 data packet)                     | FCS     |
+| 48 bits                                    | 48 bits            | 16 bits                              | MTU MAX 1500 Bytes                             | 32 bits |
+| Contains Manufacturer ID and Serial number |                    | says what kind of data is being sent | algeralim value, to make sure its a good frame |         |
+         
+==== Wireless Ethernet Protols 802.11 ====
+* 802.11
+    * For Enterprise business markets, no encryption 
+* 802.11b for comsumer/home market
+    * 802.11b is faster
+        * uses 2.4 GHz 
+        * up to 11Mbps bandwith
+        * Initally for SOHO use
+    * 802.11g is fastest and merges with enterprise 
+        * uses 2.4 GHz only
+        * up to 54.Mbps bandwith 
+        * Enterprise/SOHO
+    * 802.11n is convergence of 2.4 and 5.0 GHz spectrum
+        * up to 300Mbps bandwith
+        * Uses MIMO Multiple input/multiple outpoot, can send out data on both intennas 
+* 802.11a for enterprise/business market
+    * uses 5.0 GHz spectrum only, up to 54Mbps bandwith, initially for enterprise use only
+* 802.11ac merge of enterprise and consumer wifi protocl 
+    * uses 5.0 GHz spectrum only
+    * up to 1.3Gbps bandwith, similar to wired connection. 
+    * Uses Multi User MIMO and beamforming 
+* 802.11ax (wifi 6)
+    * 2.4Ghz and 5.0Ghz plus ISM Bands (industrial, sientific and medical)
+    * MIMO and MU-MIMO
+    * Beamforming 
+    * OFDMA (orthogonal frequency division multiple access) packing data onto a wireless signal as possible
+* 801.1q ethernet for trunk links
+=== Layer 1: Physical Layer ===
+* Wireless 
+    * 2.5 GHz for 802.11 wireless needs 22 MHz to transport data, with multiple individual channels. And can only use 3 or 4 of the 14 cannels, using 1, 6 and 11.  
+    * 5 GHz wifi spectrum ranges from 5.170 GHz to 5.835 GHz
+        * Some channels requires DFS, Dynamic Frequency Selection, which is used by the military, and the equipment needs to detect they are using the channels and need to automatically switch to a channel that is not a DFS channel.
+        * Channels that done use DFS: 36, 40, 44, 48, 149, 153, 157, 161
+* Cables: 
+    * Wireless
+    * Copper
+        * Twisted Pair Cabling
+            1. Twisted wires at different rates prevent crosstalk to make data transfers faster. 
+            2. Shielding Twisted Pair STP (has shield), vs Unshielded Twisted Pair UTP 
+            3. Connectors: RJ11 (Telephone) and RJ-45 (etherent)
+            4. Straight Through (PC to Switch, Switch to Router) vs Crossover (from like device to like device, router to router, switch to switch, PC to PC, PC to router) 
+| Pin# and Color | EIA/TIA-568-B | 568-A             |
+|----------------|---------------|-------------------|
+| 1 White/Orange | 1- Transmit + | 1 White/Green Tx  |
+| 2 Orange       | 2- Transmit - | 2 Green Tx        |
+| 3 White/Green  | 3- Recieve +  | 3 White Orange Rx |
+| 4 Blue         | None          | 4 Blue            |
+| 5 White/Blue   | None          | 5 White/Blue      |
+| 6 Green        | 6- Recieve -  | 6 Orange Rx       |
+| 7 White/Brown  | None          | 7 White/Brown     |
+| 8 Brown        | None          | 8 Brown           |
+            5. Categories
+| Cabling Type | Use                        | Ethernet Designation | Name              |              |
+|--------------|----------------------------|----------------------|-------------------|--------------|
+| Cat 1        | Doorbell                   |                      |                   |              |
+| Cat 3        | Telephone/10 Mbps Ethernet | 10BaseT              | Ethernet          |              |
+| Cat 5        | 100 Mb Ethernet            | 100BaseT             | FastEthernet      |              |
+| Cat 5e       | Gigabit Ethernet           | 1000GBaseT           |                   |              |
+| Cat 6        | Gigabit Ethernet           | 1000GBaseT           |                   |              |
+|              |                            | 1Gbps                | GigabitEthernet   | Full Duplex  |
+| Cat 6a/Cat 7 | 10 Gigabit Ethernet        | 10GBaseT             | 10GigabitEthernet | Full Duplex  |
+| Cat 8        | 40 Gigabit Ethernet        | 40GBaseT             | 40GigabitEthernet | Full Duplex  |
+            6. Auto MDI-X (Auto Medium Dependent Interface Crossover) so you can use any kind of cable, straight through or crossover
+    * Coaxial Cabeling
+        1. Cable TV/Cable Internet is RG-6 with a F-Type connector
+        2. Twinaxial Cabel/Twinax has 10GB or 40GB, often with network interface card built into the cable (SFPs), to connect switches, routers, servers or SANs together.
+    * Ethernet Switches
+        1. Layer two switchs
+            * MAC address table has ports and MAC addresses connected to the port, ASIC Application-Specific Integretaged Circuit, all it does is read the destincation and source MAC address of the frames.
+            * Swich builds circet after the MAC address table
+        2. Layer two Broadcasts
+            * In the Ethernet 2 Frame, the destination MAC address field, if that is all Fs or all binary 1s, it means the frame is sent out to all active interfaces, except the receving interface 
+        3. Broadcast Domain
+            * Group of networked devices which all receive a layer 2 broadcast message. 
+        4. Connecting Switchs (is basically daisy chaining them together)
+            * Broadcast storm: clogs and overwhelms switches. so dont connect switches more than twice, or disable the port so one connection is there.
+            * Spanning Tree Protocol: shuts down one of the links, so broadcast mesages do not repeat in loop. Works with multiple switches.
+            * SHOW SPANNING TREE
+            * Port Aggregation (Extra bandwith/Redundancy) via Link Aggregation Control Protocol LAC (open source) 
+        5. VLANS
+            * Broadcast Domain: 
+            * Joining two networks with a switch, you can assign ports to be a specific VLAN, creating a little mini switch within the switch, so you only forward traffic to intended devices.
+            * Computers on two networks, connected by two switches connect by a trunk link, tags messages in the fram to go to correct VLAN network switch, and removes the tag and gives to correct computer. 
+            * VLANS create mini networks which are seperate using VLAN tags in the fram as they travers switches via a trunk link. 
+                * The ports on the trunk link are called Tagged Ports.
+            * Protocoll on trunk link for Tagged Ports is 802.1Q 
+            * Example seperating VOIP traffic of phone Voice VLAN from regular Data VLAN for computer data.
+            * Putty: "show mac address-table"
+                * F0/0 means Fast Ethernet 
+                * Enter configuration mode: "configure t"
+                * Configurean command: "#int f0/3"
+                * Change vlan port: "#switchport access vlan 20" 
+        6. Port Mirroring 
+            * Takes all the traffic and mirros the traffic from the swithch to another computer so you can analize the traffic
+            * Wireshark can do this port mirroring
+        7. Power over Ethernet PoE
+            * power devices over the ethernet line  
+            * 802.3af (2003 15.4 watts DC Power)
+            * 802.3at (2009 25.5 watts DC Power POE+)
+    * Fiber Optics
+        1. Cabling
+            * Single Mode
+                * Very thin, laser passes though for long distances
+                * Usually Yellow jacket/insulation
+            * Multi Mode
+                * Thicker glass, cheaper to make, use in applications which are shorter, laser light bounces around in fiber which reduces single strength. 
+                * Usually has Orange or Aqua jacket/insulation
+        2. NIC Lasers and Fiber Optic
+| Mode        | Laser Type | Wavelength  | Fiber       | Distance |
+|-------------|------------|-------------|-------------|----------|
+| Single Mode | LX         | 1270-1610nm | Single Mode | 70 km    |
+| Multi Mode  | SX         | 770-860 nm  | Multi Mode  | 1/2-1km  |
+        3. Optical Network Interface Cards (Optics, lasers)
+            * GBIC (old)
+            * SFP (small form pluggable)
+            * Plug into switch, server or other network device
+            * QSFP and QSF+ (newer form of NIC cards, Q means Quad.)
+            * Connectors( ST Connector, SC Connector, LC Connector, MTRJ Connector, FC Connector) 
+            * Patch Panel, terminate in one spot then use shorter piece of fiber to plug into the pach pannel, to plug in to the SFP into the gear.
+        4. Connections: Angled physical contact (APC) or Ultra Physical Contact (UPC) 
+        5. Operation: light and data flow one way in one fiber and the other way, called Simplex Pair, with lasers and eyes on both ends. But can be one fiber, called Bidirectional with different wavelengths of light via WDM (Wave division Multiplexing). WDM works by using three different kind of UV lasers shining into a prism and creats a single stream of light, and then another prism breaking it out into each eye. 
+        6. Wave Division Multiplexing
+            * coarse wave division multiplexing, CWDM, and is passive. 
+            * Dense Wave Division Multiplexing, Powered, longer distance, more wavelengths.
+        8. Fiber Ethernet Designation and Cabling Type  
+| 100BaseFX                             | Multi Mode Fiber  |
+| 100BaseSF                             | Multi Mode Fiber  |
+| 1000BaseSX                            | Multi Mode Fiber  |
+| 1000BaseLX                            | Single Mode Fiber |
+| 10GBaseSR Aqua mostly but some orange | Multi Mode Fiber  |
+| 10GBaseLR                             | Single Mode Fiber |
+        
+        
+        
+        
+    * 66 Block telephone and 110 block, bigger version of 66 block, use punchdown tool, Krone, 110, BIX
+* Protocols:
+	- Ethernet
+
+== Encapsulation and the OSI Model ==
+1. Application Layer breaks up data into Transport Layer
+    - Segment: a chunk of data with a transport lawyer header, we put in a source and destination port number, and this port number is going to be directly related to an application layer protocol 
+2. Transport layer becomes the payload for the Network Layer which is called a Packet
+3. Network Layer packet goes into the Data Link Layer payload into a Frame
+    - Frame: a chunk of data with a Data Link layer header
+        -- Ethernet MTU(Maximum Transmission Unit) is 1500 Bytes Including Packet Header and Segment header
+4. Link Layer sends the Frame down to the Physical Layer which breaks it into ones and zeros, and then that is converted into a signal
+
+---------------------------
+== Routing IP Traffic ==
+1. Require Physical, Data Link (traffic from one device to another) and Network layer (Internet Layer with routers to move traffic from one segment of the network to another, and if  Layer 2 Bridge like a Cabel Modem that converts Ethernet frames and puts it in a DOCSIS frame (DOCSIS is protocol that cabel modem uses to communicate to ISP)
+2. IP Packet
+    * IP Packet contains:
+        * Source IP Address
+        * Desitnation IP Address
+        * TTL (couter every time it goes through a router it desceases). 
+        * Other
+        * ICMP (Ping uses ICMP protocol)
+    * Layer 2 Frame
+        * Destination MAC Address
+        * Source MAC Address
+        * Layer 3 Protocol
+
+---------------------------
+== Binary ==
+
+== Counting == 
+
+| 128s | 64s | 32s | 16s | 8s | 4s | 2s | 1s |
+|------|-----|-----|-----|----|----|----|----|
+| 1    | 1   | 0   | 0   | 0  | 0  | 0  | 0  |
+
+Multiple placeholder by placeholder itself. Example: 11000000 is equal t 128 + 64 = 192 
+
+== Converting Decimal to Binary ==
+
+| 128s | 64s | 32s | 16s | 8s | 4s | 2s | 1s |
+
+Example: 210
+
+| 128s        | 64s      | 32s | 16s     | 8s | 4s | 2s    | 1s |
+|-------------|----------|-----|---------|----|----|-------|----|
+| YES         | Yes      | No  | Yes     | No | No | Yes   | No |
+| 210-128= 82 | 82-64=18 |     | 18-16=2 |    |    | 2-2=0 |    |
+| 1           | 1        | 0   | 1       | 0  | 0  | 1     | 0  |
+
+Example: 47 
+
+| 128s | 64s | 32s      | 16s | 8s     | 4s    | 2s    | 1s    |
+|------|-----|----------|-----|--------|-------|-------|-------|
+| No   | No  | Yes      | No  | Yes    | Yes   | Yes   | Yes   |
+|      |     | 47-32=15 |     | 15-8=7 | 7-4=3 | 3-2=1 | 1-1=0 |
+| 0    | 0   | 1        | 0   | 1      | 1     | 1     | 1     |
+
+
+== Hexadecimal ==
+
+| Binary | Decimal | Hexadecimal |
+|--------|---------|--------------|
+| 0000   | 0       | 0            |
+| 0001   | 1       | 1            |
+| 0010   | 2       | 2            |
+| 0011   | 3       | 3            |
+| 0100   | 4       | 4            |
+| 0101   | 5       | 5            |
+| 0110   | 6       | 6            |
+| 0111   | 7       | 7            |
+| 1000   | 8       | 8            |
+| 1001   | 9       | 9            |
+| 1010   | 10      | A            |
+| 1011   | 11      | B            |
+| 1100   | 12      | C            |
+| 1101   | 13      | D            |
+| 1110   | 14      | E            |
+| 1111   | 15      | F            |
+| 10000  | 16      | 10           |
+
+==IP Addressing==
+
+* IP address are in the Network Layer, layer 3:
+| Network Portion | Host Portion (specific device on network |
+| 0203.0.113       | .10                                      |
+Example:  
+| Street Address  | Zip Code |
+|-----------------|----------|
+| 123 Main Street | 60787    |
+
+=== IPv4 ===
+* IP addresses are really 32 bits long, just put it in decimal to read easier. 
+
+=== Classful vs Classless addressing ===
+* _We don't use Classfull  anymore!_ Because we ran out of IP ranges as we didn't predict speed of growth of internet.
+*  Classful Addressing (~1995 and prior)
+| Cast            | Class | IP Range  | IP Range Continued | Bits in subnet mask                                 |
+|-----------------|-------|-----------|--------------------|-----------------------------------------------------|
+| Unicast         | A     | 0.0.0.0   | 127.255.255.255    | 8 bits in network portion, 24 bits in host portion |
+| Unicast         | B     | 128.0.0.0 | 191.255.255.255    | 16 bits in network, 16 in host                      |
+| Unicast         | C     | 192.0.0.0 | 223.255.255.255    | 24 bits in network, 8 in host                       |
+| Multicast       | D     | 224.0.0.0 | 239.255.255.255    | All bits in the network portion                     |
+| Experimental    | E     | 240.0.0.0 | 255.255.255.255    | We don't use this anymore!                           |
+* Classful Addressing  Portions
+| Network Portion | Network Portion | Network Portion | Host Portion |
+|-----------------|-----------------|-----------------|--------------|
+| .               | .               | .               | .            |
+| 10              | 0               | 10              | 10           |
+| 00001010        | 0000000         | 00001010        | 000001010    |
+
+
+
+* Classless Addressing (~1995 to present)
+1.  Subnet mask: Network Portion and Host Portion 
+| Network Portion | Network Portion | Network Portion | Host Portion |
+|-----------------|-----------------|-----------------|--------------|
+| .               | .               | .               | .            |
+| 203             | 0               | 113             | 10           |
+| 11001011        | 00000000        | 01110001        | 00001010     |
+| 11111111        | 11111111        | 11111111        | 00000000     |
+| 255             | 255             | 255             | 0            |
+2. Subnet Mask
+| Network Portion | Host Portion | Host Portion | Host Portion |
+|-----------------|--------------|--------------|--------------|
+| .               | .            | .            | .            |
+| 10              | 0            | 0            | 10           |
+| 11001011        | 00000000     | 000000000    | 00000000     |
+| 11111111        | 00000000     | 00000000     | 00000000     |
+| 255             | 0            | 0            | 0            |
+3. Subnet Mask does not have to fall within the 8-bit boundary
+| 10       | 0        | 0        | 10       |
+| 00001010 | 00000000 | 00000000 | 00001010 |
+| 11111111 | 11111111 | 11110000 | 00000000 |
+| 255      | 255      | 240      | 0        |
+
+=== Address Types ===
+* The secret is making sure that we use subnet mask simply to identify which portion of the IP address is the host portion, a then when we are looking to see if its network, broadcast or host address we are looking at IP address, not the subnet mask. Subnet mask is just telling us where to look in the IP address for all Zeros (network Address), all ones (Broadcast), or anything except zeros and ones (Host).
+
+
+1. _Network Address_:
+    - Identifier for a group of devices
+    - "Network Prefix"
+    - Have all Zeros in the Host portion. 
+| Network Portion | Network Portion | Network Portion | Host Portion |
+|-----------------|-----------------|-----------------|--------------|
+| .               | .               | .               | .            |
+| 203             | 0               | 113             | 10           |
+| 11001011        | 00000000        | 01110001        | 00001010     |
+| 11111111        | 11111111        | 11111111        | 00000000     |
+| 255             | 255             | 255             | 0            |
+
+
+2. _Broadcast Address_: 
+    - Identifier for all devices on a network.
+    - It allows a sender to send a message to every single device on the network. 
+    - Have all 1's in host portion
+| Network Portion | Network Portion | Network Portion | Host Portion |
+|-----------------|-----------------|-----------------|--------------|
+| .               | .               | .               | .            |
+| 203             | 0               | 113             | 255          |
+| 11001011        | 00000000        | 01110001        | 11111111     |
+| 11111111        | 11111111        | 11111111        | 00000000     |
+| 255             | 255             | 255             | 0            |
+
+
+3. _Host Address_: 
+    - Identifies unique device on a network. 
+    - Identifies a unique device on the network, combo of network portion of address and host portion of address, where the host portion isn't identifying a network address nor the broadcast.  
+    - Anything EXCEPT all binary 0's or 1's
+| Network Portion | Network Portion | Network Portion | Host Portion |
+|-----------------|-----------------|-----------------|--------------|
+| .               | .               | .               | .            |
+| 203             | 0               | 113             | 10           |
+| 11001011        | 00000000        | 01110001        | 00001010     |
+| 11111111        | 11111111        | 11111111        | 00000000     |
+| 255             | 255             | 255             | 0            |
+
+
+_Examples_
+- 203.0.113.55 and 255.255.255.0 is a HOST address
+- 192.0.168.10 and 255.255.255.0
+
+=== Ip Routing ===
+* cannot ARP for destiation address because its not on our own local network because ARP messages cannot be sent through a router. ARP messages cannot be sent through a router. 
+* Consult Routing tabel on PC. To reach Local network and a route for everything else, including default gateway
+* Static Routing: Manually adding networks that Routers do not know about, problem is that it does not change with network changes.  
+* Dynamic Routing: will use a routing protoc to build the routing tables themselfves  
+    * RIP protoc: is not used anymore. 
+    * EIGRP: Ciscos routing protoc called Enhanced Interior Gateway Routing Protocol 
+    * OSPF: Open Shortest Path First, popular with enterprise 
+    * BGP: Border Gateway Protocl, used on public internet to move different business and internet service providers, more like a scripting language with parameters that we can configure. 
+* Administrative Distance: the higher the number the lower the priority of routing protocl, determines which route is good one to add to the routing table.
+
+=== Tracert === 
+* tracert 8.8.8.8 -d will give only ip addresses and no DNS lookups. 
+
+==CIDR Classless Inter-Domain Routing==
+* Length of the Network Prefix in bits
+| IP Address             | 203.0.113.                 | 10       |     |
+| Subnet Mask            | 255.255.255.               | 0        |     |
+| Network Prefix 24 bits | 11001011 00000000 01110001 | 00001010 |     |
+| Network Prefix 24 bits | 11111111 11111111 11111111 | 00000000 |     |
+| CIDER Notation         | 203.0.113.                 | 10       | /24 |
+
+==Private IP Addresses==
+* Before 1994 there were no Private IP Addresses, just public IP addresses. Running out of IP addresses, changed to classless addressing (gave us subnet mask), then introduced private IP ranges. Not be routed publicly on the internet.  
+* RFC 1918:
+| Class | Private IP address range |                 | CIDER |   |   |
+|-------|--------------------------|-----------------|-------|---|---|
+| A     | 10.0.0.0                 | 10.255.255.255  | /8    |   |   |
+| B     | 172.16.0.0               | 172.31.255.255  | /12   |   |   |
+| C     | 192.168.0.0              | 192.168.255.255 | /16   |   |   |
+|       |                          |                 |       |   |   |
+* APIPA Automatic Private IP Addressing: EX 169.154.0.0/16 and is developed by Microsoft and red flag as someone doesn't know what they are doing and should not be used. Or something is wrong. 
+* Loopback IP: Ex. 127.0.0.1 and messages sent to this never leave your computer and just a way to make sure IP is working on a workstation. |
+* If network portion of mask is different you will need a router/default gateway to communicate between the two computers. 
+
+==Subnetting Basics==
+
+Network: 10.0.0.0/8
+Range: 10.0.0.0 - 10.255.255.255
+Network: 00001010 | 00000000 00000000 00000000
+Broadcast: 00001010 | 11111111 11111111 11111111
+    11111111 00000000 00000000 00000000
+    
+Lets find a host address on this network. 
+Host: 00001010 00000000 00001010 00000000
+
+Change it to a /24 network: 
+10.0.10.0/24
+Network: 00001010 00000000 00010010 | 00000000
+Broadcast: 00001010 | 00000000 00001010 | 11111111
+So this network now has 254 different hosts. Zero to 255 is 256 unique address but but remove network address which you cant apply to a device and one for the broadcast address which you cant apply to a device. 
+So now the network is 10.0.10.0 - 10.0.10.255
+ 
+ ===Variable Length Subnet Masking VLSM===
+ Its a way to break up /24 mask to be other kinds of masks:
+| 10.0.0.0/8   |
+|--------------|
+| 10.0.10.0/24 |
+| 10.0.16.0/22 |
+| 10.1.0.0/16  |
+| 10.2.0.0/30  |
+Cant just randomly pick IP addresses and masks and apply it to networks. Do have to make sure there is no overlap between subnets.
+
+==IPv6==
+
+===IPV6 Address Components===
+* Bit is 0 or 1
+* 4 Bits is a Nibble and is made of of 0 or 1s, can be written as a hexadecimal value like: 0xA 
+* Two Nibbles is 8 bits: 1001 0011
+* Eight bits in a byte: 11010111
+* Two nibbles is a byte and a byte is 8 bits. Hexadecimal of 0xA8 is one byte worth. 
+* Two bytes is a hextet: 1001001110010011 and is in Hexadecimal 0xA8C5 which is equivalent to 16 bites. 
+
+===IPv4 Address Size===
+* 32 bits long = 4 octets
+* 192.168.10.10 or in binary: 11000000 1010100 00001010 00001010 
+ 
+===IPv6 Addresses===
+* 128 bits long = 32 nibbles = 8 hextets 
+* 2001:0DB8:0002:008D:0000:00A5:52F5
+* To make it easier to read:
+    * Eliminate Leading 0s
+    * 2001:0DB8:0002:008D:0000:00A5:52F5 or 2001:DB8:2:8D:0:0:A5:52F5 or 2001:DB8:2:8D:0:0:A5:52F5
+* just count 4 hextets, and that is 64 bits
+* use /64 subnet for everything, except for routers. 
+| Network portion 64 bits | Interface Identifier 64 bits |
+| 2001:0DB8:0002:008D:    | 0000:00A5:52F5               |
+
+===IPv6 Address Operation===
+* IPv6 computers need a router unless they have the same subnet in which they can use IPv6 Link Local Addresses for local communication via a switch, otherwise on the internet they need IPv6 Unicast address, used for global communication (ie devices on the internet).
+    * Link Local Address is: FE80::/10  
+    * Loopback address: ::1/128
+    * 
+* IPv^ sends out peridoc messages to find out who is on the network using IPv6
+* Multicast Address
+    * one to many communication 
+* Anycast Address
+    * One IPv6 address to many devices
+    * Used for Load balancing 
+* Duel Stack: running IPv4 and IPv6 Protocalls on a computer
+* There are no private IPv6 addresses, all are public, except for a documentation
+
+===IPv6 Address Types===
+
+
+===IPv6 Address Acquisitions===
+* You can always manually configure the network
+* SLAAC Stateless Address Auto-Configuration 
+    * Does not exhist in IPv4
+    * Router in the network/default gateway, has IP address of 2001:DB8:4:A::1/64 and every so often it sends out a Router Advertisement on network 2001:DB8:4:A::/64 as a RA, so any other device can know what the network is and join. 
+    * Depending on the operating system: 
+        * It will configure (Windows Random 64 bit interface identifier), so the computer will create two IPv6 (Manual IPv6 and automatically genererated Link Local IPv6 address). 
+        * Mac and Linux will use Modified EUI-64 address and take MAC address (MAC is layer 2) of network interface card, and split it in to middel of the MAC address and add FF:FE and this will make the address 64 bits long. Ex: 000C:29FF:FEFC:70A5. Then you take the first two bits and convert them into binary, Ex: 00 to 0000 0000 and then you take the 7th bit in that last and flip it to either 0 or 1, then convert it back to hexadecimal and now that becomes the interface identifer. 
+* Once the router sends out the Router Advertisement, then client configures message back to rest of the network saying that the client computer is on the network now , this is my IPv6 address, and since the address is configured randomly, double check to make sure nobody else has it. 
+
+===IPv6 DHCP===
+* The DHCP server will help configure the IPv6 address, but router will need to turn off SLAAC
+* Allows for a lot more control, allows for shorter addresses, esp in internal networks
+
+===IPv6 Tunneling===
+* Main problem in IPv6 is that not everyone supports it. 
+* Figure out a way to get IPv6 traffic across the IPv4 internet, and they are not backwards compatible
+* Build a tunnel: mechanism to take IPv6 message/packet and put it inside a IPv4 packet, and then rebuilt as a IPv6 packet
+
+==Network Services==
+
+===Network Address Translation===
+* NAT is a Network Layer function (layer 3)
+* Router stores the source/client IP address in a table, with other parameters, and replace the source IP with that of the router, which is a public routable IP address. The packet goes to the desistination on the internet, and comes back to router which translates/swapps out address in packets in order to make those packets routable on internet. 
+* In home networks its called Port Address Translation. 
+
+===Dynamic Host Configuration Protocol===
+* DHCP is Application Protocal, layer 7
+* DHCP typically needs DHCP server: 
+    * DHCP server hands out IP addresses for entire organization. 
+    * DHCP Scope
+        * Network: 10.0.0.0/24
+        * Excluded: 10.0.0.0.10 - 10.0.0.99 (for servers or printers or things that need static IP addresses)
+        * Gateway: 10.0.0.1
+        * DNS: 8.8.8.8
+        * Lease Time: 10,080 min (means how many days it needs before requesting a new one)
+    * DHCP Binding database 
+        * A Table that lists out the addresses that are handed out per device
+        * IP address
+        * Default Gateway
+        * DNS
+        * 
+    * IP Helper Address on a router, found on larger companies espically with more than one subnet that were working with, and when DHCP server is somewhere on network, and any router on network will have IP Helper Address for clients sending out DHCP discover message, the message hits the router and router knows where to forward it to the DHCP server's own IP address. this is so you can have a single DHCP server for all subnets on network.
+
+===Domain Name System===
+* DNS is Application Layer 7 protocal, can use UDP or TCP depending on what your trying to accomplish.
+* URL is Uniform Resource Locator (www.nasa)
+* TLD is Top Level Domain (.ORG)
+* Second Level Domain nasa
+* Third Level Domain also called Hostname (WWW)
+* DNS is updated via DHCP
+    * Forward Lookup
+    * Reverse Lookup
+        * Pinter Record PTR
+* Root Domain Server
+* Records
+    * A: IPv4 record
+    * AAAA: IPv6 Record
+    * CNAME: Canonical Name Record, record where we can set it up in DNS and theres no IP address associated with it.
+    * MX: Mail Exchange Record
+    * NS: Nameserver/ Identifies Authorative Name Server
+    * PTR: Pointer Record for reverse DNS, needed for Reverse DNS to work
+    * SRV: Service Record, specifies IP address and Port number
+    * TXT: additional info 
+
+===Network Toplogies and Types===
+* Bus
+    * Old tech, run on 10Base5(Thicknet) and 10Base2(Thinnet) hardware
+    * Where all computers are connexted by a wire
+* Ring
+    * We dont use anymore, devices connected in ring via twisted pair, coax or fiber
+* Star
+    * where every divice has cabel running to central location like a switch
+* Hybrid
+    * Peer to Peer, direct communication with each other, both server and client for data
+    * Client Server Network
+
+===Blank Area Networks===
+====Network Classifications====
+* LAN
+    * Local Area Network: devices connected to centeral Switch
+    * Needs Switches (Layer 2)
+* WLAN
+    * Wireless Local Network
+* WAN
+    * Take two LANS over wide distance
+    * Needs Routers (Layer 3)
+* SAN
+    * Storage Area Network: Storage in a server
+* CAN: Campus Area Network
+* MAN: Metropolitan Area Network
+* PAN: Personal Area Network, your own connected devices, smart phone and watches
+
+===WAN Technologies===
+* Leased Lines
+    * Copper T1
+* Fiber Optics
+    * 40 GB or more
+    * Dark Fiber (Leased fiber)
+    * Metro Ethernet (Use fiber, but service will have lazers, and you can control stuff, but not as much as Dark Fiber). Many kinds of data bandwith, 10Mb, 100Mb, 1Gb, 10Gb, 40Gb.k
+        1. Multiprotocol Lable Switching MPLS: used to keep data of other groups seperate, and allow multiple VLANs (Way of seperating netork traffic to be organized into efficient and secure networks). 
+    * Optical WAN
+* Internet
+    * DLS
+    * Fiber Optic
+    * Satellite
+    * Cable
+* T1 Link (E1 in Europe)
+    * Bell Labs
+    * 24 Channels @ 64k each + framing bit = 1.544Mbps
+    * Telco Network --> to Demarcation Point/Smart Jack --> CSU/DSU (Cabele service unit/data service unit) or router. Its interface between T1 version of communication and the communcation to router
+    * Demarcation Point is point in network that divides which between telephone companys equipment and which is the customers equipment
+* T3 (E3)
+    * Numorous T1s bundled together, 44.736Mbps
+* ISDN 
+    * Old school connection
+* Prinary Rate Interface PRI
+    * SIP trunk alternate, VOIP for POTS network, or use ISDN with a PRI
+* SDWAN
+    * Software Defined LANs
+    * Tunnels for communication (mGRE) Multipoint Generic Routing Encapsulation. 
+    * Server sets up routing paths
+===Virtualed Networks===
+* Virtualize datacenters
+* Servers, hooked up a SAN, so Processor, Memory, Network Interface and allow all virtual servers to run on one server. More efficiant with processor utilization and memory utilization. Less power, physical power, electricity.
+* Networking connection to physical servers requries lots of bandwith on a special secure network VLAN, with virtualized network hardware
+* Redundant servers with redundant virtual machines
+* Load balancer: can be virtual with virtual IP address VIP
+* Hypervisor runs all the virtual servers, data network and virtual servers, network function virtualization.
+
+
+==Corporate and Data Center Architectures==
+* 3 Tier Design
+    1. Core
+        * "Backbone" of the network.
+        * Connect all the distribution layer nodes together. 
+        * High speed connections
+        * Few to no policies
+        * Limit changes to make traffic flow fast 
+    3. Distribution
+        * Connecting/Distributin network to all Access layer devices (computers and switches) to Layer 3 switches or routers to take all access layer devices and connect them to redundant devices (multiple Layer 3 routers or multiple Layer 3 switches.
+        * Filter traffic that is undesirable on network
+        * Routing Policies and implement routing protocols to distribute network for high-speed paths that are redundant and resiliant though the network.  
+    4. Access
+        * Computers in a office networked to a switch,
+        * Control access to network (policies on the switches)
+* Software Defined Networks SDN
+    * The overlay we put in infrastrucutre on our hardware to describe how to move traffic nice and quick across the network
+    * Datacenter use: At the top of the rack, place a network switch, and network switch will be the point where all the servers in the rack connect, this is called a leaf (kinda like Access Layer). Leaf connects to Spine switch (kinda like Distrobution layer)o 
+    * East West communication: server to server communcation. 
+    * North South communication: client goes into data center, goes out to client. 
+    1. Application Layer
+        * Where utilities and rulesets allow network to operate via polies (control traffic loads during peak times etc.) 
+    3. Control Layer
+        * The configuration that is applied to SDN Controller is applied in Control Layer. 
+        * Responsible for moving traffic arround, accepting the configuration from the administrator from the workstation there, giving right info like IP addresses via DHCP services. applying some access control rules to limit where traffic can go, and responsible for moving traffic to right right location at the most efficient way possible. 
+    5. Infrastructure Layer
+        * Consitst of routers, switches, Layer 3 switches connected together with certain policies (routing and switching). 
+        * Already has networking applied
+        * Management Plane: mechanism of configuring, controlling and monitoring all devices on network via SDN Controller which will host all configurations that will get applied as an overlay to rest of hardware to make it easier to control and manipulate traffic. The configuration that is applied to SDN Controller is applied in Control Layer.
+
+* Storage Area Network Connections
+    1. SAN (just processorsers and memory) connections to Servers
+    2. Servers need a way to connect to the SAN, is done with switch, 3 ways to do this
+        * Fibre Channel: (connection via SAN, fiber optics to connect to a fiber optic switch to distribute SAN to servers). Layer 2 protocal, dont need to worry about IP or TCP or anything above the data link layer of OSI Model. 
+        * Fibre Channel over Ethernet FCoE: over high speed ethernet
+        * iSCSi: Uses TCPIP connection between SAN and servers. 
+
+==Cloud Services==
+* Data Center Services
+    * Server (Processsor and Memory)
+    * Storage (Disk)
+    * OS/Software
+
+===Public, Private, Hybrid, Community Clouds===
+* Community Cloud: When you have a private organization offering a specialized service to allow other smaller orgs to connect to it and use those services.
+===Software as a service===
+* Popular consumer markets
+* Used in commercial operation for decades
+* Hosted DNS
+
+===Platform as a service===
+* Hardware/Software
+* "Server Side" services: Like a Linux server, where you can use processor and memory and storage space
+* Database: SQL database, sending data to and from database
+* Colocation: services set up in someone elses data center to offer redundancy to our own systems.  
+===Infrastructure as a service===
+* Server Hardware
+* Disk/Storage 
+* Automation to expand service needs.
+===Desktop as a service===
+* Virtual desktop to user
+* "workstation" is mobile 
+* easy to deploy
+* easy to support
+
+==Cloud Benefits==
+* Mutitenancy: redundancy, grow rapidly
+* Elasticity: grow or shrink enviroment
+* Scalability:
+* Security
+
+
+
+
+
+
+= Smart Hands Training =
+== Switches ==
+1. Patch pannel labeling
+* no standards in labeling
+2. Patch Pannels 
+* 48 or 24 ports, identifier label or switch room identifier
+* Patch cabels is a pach pannel to switch
+* Use toner to find patch pannel. 
+3. Ports on a switch
+* Odds on top, evens on bottom
+* Switch stack number(1)/module number (0)/portnumber (GI is gigabit) 
+* 6-8-12 ports and 24-48 ports
+* 9000 series switches 
+* Stacked swiches are 1 to higher number from top to bottom
+* Smaller switches
+== Accessing a switch ==
+* Putty
+    * IP address, password 
+* Solarwinds keeps networt sessions active to remote into. 
+* Console
+    * directly connecting to the switch via RJ45 to USB, Cisco specific, should be in the MDF room
+    * Console ports for Cisco are blue port, yellow is managment port 
+* Propts: # means privalige exec mode, (Config) is config mode so be careful, show command will show settings
+* VLANS
+    * network is assigned a number and name, some 
+    * Depending on AD OU, device will but put on the VLAN
+* Clearpass 
+    * trunk port, multiple vlans at a time to connect accross vlans
+    * access ports, where only one vlan exhists on the port
+    * NAC port: type of access port, security port, and talks to clearpass and decides what vland the device belongs to
+    * Build port: also an access port, port assigned to particular vlan
+    * static access ports: are for the servers, where VM ware host connects to server 
+    1. MAB: Mack Authentication, authenticated with MAC. Add the dynamic vlan setting so it goes on the correct network.  
+    3. Dot1X authentication: domain controllers, all computers should be using dot1x
+
+* Solarwinds
+    1. Gets DHCP reservations
+    2. Can use MAPs to see maps. 
+    3. Can set up alerts 
+* [[Wireless]]
+1. Green: has two differnet vlans
+2. Purple: lift scanners
+3. Blue: old lift scanners
+4. Red: going away, wireless infogenissis access,
+5. EmployeeDevice being replaced: for emplyee cell phones, new password changed every year.
+6. Slate: for vail devices, tempertare sensors, i9's ipads, each device has own password to its mac address
+       
+

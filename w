@@ -1,0 +1,140 @@
+                = Contents =
+        - [[#Network Concepts|Network Concepts]]
+        - [[#OSI Model to Describe Network Operations|OSI Model to Describe Network Operations]]
+            - [[#OSI Model to Describe Network Operations#Layer 7: Application Layer|Layer 7: Application Layer]]
+            - [[#OSI Model to Describe Network Operations#Layer 6: Presentation Layer|Layer 6: Presentation Layer]]
+            - [[#OSI Model to Describe Network Operations#Layer 5: Session Layer|Layer 5: Session Layer]]
+            - [[#OSI Model to Describe Network Operations#Layer 4: Transport Layer|Layer 4: Transport Layer]]
+            - [[#OSI Model to Describe Network Operations#Layer 3: Network Layer|Layer 3: Network Layer]]
+            - [[#OSI Model to Describe Network Operations#Layer 2: Data Link Layer|Layer 2: Data Link Layer]]
+            - [[#OSI Model to Describe Network Operations#Layer 1: Physical Layer|Layer 1: Physical Layer]]
+        - [[#Encapsulation and the OSI Model|Encapsulation and the OSI Model]]
+
+----
+                = Network Concepts =
+
+== OSI Model to Describe Network Operations ==
+
+===Layer 7: Application Layer ===
+* Protocols
+    1. Hypertext Transfer Protocol http and https
+        - 
+    2. Data Transfer Protocols
+        - FTP, sftp and TrivialFTP for small file transfers, ServerMessageBlock SMB for windows shared drive from workstations to other work stations.  
+        - SMB:
+            - To mount a SMB drive you can "Map network drive" above drives A,B,C,D
+        - Email:
+            - POP3: Retrieve email from the server
+            - IMAP: Retrieve email from the server
+            - SMTP: Send email from the server
+    3. Authentication Protocols
+        - LDAP & LDAPs
+    5. Network Service Protocols
+        - Dynamic Host Configuration Protocol DHCP, giving workstation an IP address when plugged into the network.
+        - DHCP sends out 'offer message', containing:
+            - IP Address
+            - Subnet Mask
+            - Default Gateway
+            - DNS Server
+            - Other Information
+        - DHCP is accessed via command prompt 'ipconfig', delete records via 'ipconfig /release' or add IP via 'ipconfig /renew'
+        - DNS/Nameserver: translate IP address to human readable. :54
+        - DNS lookup on windows in CMD is nslookup
+        - NTP: UTC time
+    7. Network Management Protocols
+        -  Telnet & SSH
+        - Simple Network Management Protocol SNMP: allows devices to send simple messages back to server.
+            - When SNMP server says 'walk the tree' it messages all devices on network with numbers called MIBs, management information base, to add to a table all the events happening on devices. 
+            - SNMP Trap: when something happens on device, it sends message to SNMP server saying an event happened.
+        - Syslog: mechanism to send logs on devices to a syslog server, so the event is recorded, like plugging something into a switch to make it active.
+        - RDP: Remote Desktop Protocol, access GUI interface of headless computers. 
+    8. Audio and Visual Protocols
+        - H.323: video and voice  
+        - SIP: VOIP phones, transfers voice to a VOIP gateway
+    10. Database Protocols 
+        - SQL Databases: 
+            * Servers
+                - mySQL: open source
+                - SQLnet: Oracle
+                - SQL Server: Microsoft
+            * Language on the server
+            * Protocol used to communicate across the network to access the database
+      
+
+===Layer 6: Presentation Layer ===
+* Don't really use this layer
+* IBM created "Extended Binary Coded Decimal Interchange Code" EBCDIC as an alternative to ASCII
+
+===Layer 5: Session Layer ===
+* Not important for networking
+
+===Layer 4: Transport Layer===
+* Protocols
+    - Transmission Control Protocol TCP
+        * HTTP uses port 80 and HTTPS uses port 443
+        * Port 443 is used by SSL and TLS, which is the same thing.
+        * FTP port 20/21, sFTP port 22, and TrivialFTP port 69, SMB port 445 
+        * Responsible for building a session and maintaining two end points like client and server.  
+            - Initiatias conversations
+            - TCP 3 Way Handshake:
+                1. SYN
+                2. SYN-ACK
+                3. ACK
+                4. Client ask for server to start sending website data
+                5. Server starts sending data back to Client
+                6. Fin (when all data is done sending)
+                7. FIN-ACK
+                8. FIN
+                9. FIN-ACK
+                10. Somewtimes TCP Reset is sent and a RST commend will stop the conversation, either client, server or a firewall can send a RST
+         - User Datagram Protocol UDP
+            * No 3 way handshake
+            * no reliable communication
+            * no sequence numbers and no ack numbers
+            * Used for efficient data, but no way to make sure data is good.
+
+* Port Numbers
+    - SSL/TLS which is the same thing:443
+    - FTP: 20/21, sFTP: 22, TrivialFTP: 69, SMB: 445 
+    - POP3: 110/995, IMAP: 143/993, SMTP 25/465
+    - LDAP: 389
+    - LDAPs: 636
+    - DHCP: 67/68 
+    - DNS: 53 
+    - DNS over HTTPS, DoH: 443 
+    - NTP: 389
+    - Telnet: 23
+    - SSH: 22
+    - SNMP: 161/162
+    - Syslog: 514
+    - RDP: 3389 
+    - H.323: 1720
+    - SIP: 5060/5061
+    - mySQL: 3306
+    - SWLnet: 1521
+    - SQL Server: 1433
+    - 
+      
+===Layer 3: Network Layer ===
+* allows computers to communicate long distance across the network
+* Protocols
+    - Transmission Control Protocol TCP
+    - Internet Protocol IP
+
+===Layer 2: Data Link Layer ===
+* Protocols that allow computers to talk to each other locally
+* Protocol: Internet Protocol 
+
+===Layer 1: Physical Layer===
+* Cables: wireless, copper or glass
+* Protocols:
+	- Ethernet
+
+== Encapsulation and the OSI Model ==
+1. Application Layer breaks up data into Transport Layer
+    - Segment: a chunk of data with a transport lawyer header, we put in a source and destination port number, and this port number is going to be directly related to an application layer protocol 
+2. Transport layer becomes the payload for the Network Layer which is called a Packet
+3. Network Layer packet goes into the Data Link Layer payload into a Frame
+    - Frame: a chunk of data with a Data Link layer header
+        -- Ethernet MTU(Maximum Transmission Unit) is 1500 Bytes Including Packet Header and Segment header
+4. Link Layer sends the Frame down to the Physial Layer which breaks it into ones and zeros, and then that is converted into a signal
