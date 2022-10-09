@@ -228,6 +228,43 @@ e Conktop.google.com/access.remotedesktop.google.com/access.=
     * Beamforming 
     * OFDMA (orthogonal frequency division multiple access) packing data onto a wireless signal as possible
 * 801.1q ethernet for trunk links
+
+
+==== Wireless Topologies and management ====
+* AdHoc
+* Extended Service Set ESS
+    - Enterprise becuase there is more than one AP, dont put seperate AP, all operating different channels. 
+    - Wireless LAN Controler controls all the APs
+    - Creates profiles that you can send out to all the APs, gives different services to different areas of the network
+* BSS Basic Service Set
+    * BSSID - MAC Address 
+    * SSID Service Set ID
+* Point to Point wireless directional antenna (bad when something
+    * CanTenna and Yagi Antenna 
+* Single Strength and Quality
+    * Measured in Decibles dB
+    * Signal to Noise Ratio SNR
+    * Wireless Channel Bonding 
+        * in 22MHz wide channels, we can use channels 1, 6, 11. Well if you take 1 and 6 and merge them at 22 MHz each to make 44 MHz channel, so each channel can send 54 megabits and combined 108 megabits Mbps. 
+
+==== Wireless Encryption ====
+* WEP wired equivalency protocol (joke)
+* WPA wifi protected access
+   * TKIP Temporal Key Integrity, was extension of WEP
+   * AES Advanced Encryption Standard: 
+* WPA2 wifi protected access 2
+    * does TKIP and AES and two flavors
+    * Personal: Pre Shared Key PSK
+    * Enterprise: 802.1x EAP-TLS (username and password and certificate token for each device) Extensible Authentication Protocol - Transport Layer Security
+* WPA3 using AES
+
+==== Cellular Wireless ====
+* TDMA 2G Time Division Multiple Access, slow
+* GSM 3G Global System for Mobile Communications faster speed communication
+* CDMA 3G Code Division Multiple Access 
+* LTE 4G 5G Long Term Evolution
+    * 5G upgrade backend hardware and some wireless bands in cities. 
+
 === Layer 1: Physical Layer ===
 * Wireless 
     * 2.5 GHz for 802.11 wireless needs 22 MHz to transport data, with multiple individual channels. And can only use 3 or 4 of the 14 cannels, using 1, 6 and 11.  
