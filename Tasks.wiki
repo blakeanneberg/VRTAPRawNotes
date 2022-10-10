@@ -1,8 +1,8 @@
 = ComTIA N+ Path =
 | Title                                             | Length | Notes Link | Done |
 |---------------------------------------------------|--------|------------|------|
-| Network Concepts and Protocol                     | 5h3m   |            |      |
-| Introduction to enterprise network infrastructure | 4h33m  |            |      |
+| Network Concepts and Protocol                     | 5h3m   |            | YES  |
+| Introduction to enterprise network infrastructure | 4h33m  |            | YES  |
 | Network Managment and Operations                  | 2h4m   |            |      |
 | Network Security Basics                           | 2h58m  |            |      |
 | Network Troubleshooting and tools                 | 3h49m  |            |      |

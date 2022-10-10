@@ -1,4 +1,4 @@
-e Conktop.google.com/access.remotedesktop.google.com/access.=
+= Contents =
     - [[#Network Concepts|Network Concepts]]
         - [[#Network Concepts#OSI Model to Describe Network Operations|OSI Model to Describe Network Operations]]
             - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 7: Application Layer|Layer 7: Application Layer]]
@@ -7,7 +7,15 @@ e Conktop.google.com/access.remotedesktop.google.com/access.=
             - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 4: Transport Layer|Layer 4: Transport Layer]]
             - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 3: Network Layer|Layer 3: Network Layer]]
             - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer|Layer 2: Data Link Layer]]
+                - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Ethernet|Ethernet]]
                 - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Wireless Ethernet Protols 802.11|Wireless Ethernet Protols 802.11]]
+                - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Wireless Topologies and management|Wireless Topologies and management]]
+                - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Wireless Encryption|Wireless Encryption]]
+                - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Cellular Wireless|Cellular Wireless]]
+                - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Layer 2 Devices and Services|Layer 2 Devices and Services]]
+                    - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Layer 2 Devices and Services#Traffic Shaping|Traffic Shaping]]
+                    - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Layer 2 Devices and Services#Local Neighbor Discovery|Local Neighbor Discovery]]
+                    - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Layer 2 Devices and Services#Other Network Devices|Other Network Devices]]
             - [[#Network Concepts#OSI Model to Describe Network Operations#Layer 1: Physical Layer|Layer 1: Physical Layer]]
         - [[#Network Concepts#Encapsulation and the OSI Model|Encapsulation and the OSI Model]]
         - [[#Network Concepts#Routing IP Traffic|Routing IP Traffic]]
@@ -54,6 +62,8 @@ e Conktop.google.com/access.remotedesktop.google.com/access.=
     - [[#Smart Hands Training|Smart Hands Training]]
         - [[#Smart Hands Training#Switches|Switches]]
         - [[#Smart Hands Training#Accessing a switch|Accessing a switch]]
+
+
 
 = Network Concepts =
 
@@ -289,6 +299,40 @@ e Conktop.google.com/access.remotedesktop.google.com/access.=
 * CDP: Cisco Discovery Protocol, enabled on Cisco devices by default 
     * Commands: `show cdp neighbor`
 * Security Issue: if someone attaches to device that is not autherizd could see global 
+
+===== Other Network Devices =====
+* Load Balancers
+    1. Network Layer and Transport Layer
+    2. allows to have a single IP address called a VIP (Virtual IP Address)
+        * VIP connects to several different servers
+        * Numerous servers that can all respond to requests from clients simultaineously depending on the policy, sometimes via round robin or a health check for most resources availbe. 
+        * Distribute load to multiple serers 
+* Firewalls
+    1. Traditional Firewalls are transport layer. allows network from inside network out but not traffic from outside the network in. 
+    2. Access Control Lists: IP Address (or range) and Port Number (or range) 
+    3. DMZ: De Millitarized Zone, Allows people from the internet to get into the network
+    4. Next Generation Firewall NGFW
+        * Work at Application Layer and Transport Layer and Network Layer
+        * Also does IDS/IPS Intrusion Detection/Intrusion Prevention via a database has sigantures of malicious traffic that is undesirable in network
+        * Automatically send alerts to admin to investigate to investigate the device. 
+        * Proxy Server: filter web and interent traffic so they only access info certain websites and content filter, block traffic, or protect 
+        * VPN Concentrator: VPN Headins allows VPN get office resources from home. Creates tunnel of putting IP packets inside other IP packets which are encrypted. 
+    5. UTM Unified Threat Management
+        * Layer 7 Firewall
+        * Content Filter/Proxy Server
+        * IDS/IPS
+        * Intrusion Detection/Intrusion Prevention. 
+        * Pays attention to certain applications. Can see HTTP traffic and verify that its a web browser that is valid vs attacking and tricking firewall to think its a website. 
+* VOIP
+    * A phone has a switch to connect to network. Gives traffic priority over quality of service, connects to a VoIP gateway which connects to a SIP Trunk to connect to Plain Old Telephone Service             
+    * VoIP Gateway dials the phone over the SIP trunk 
+* Other Networked Devices
+    1. Printers
+    2. Heating Ventilating Air Conditioning HVAC: Smart Device
+    3. Physical Access Control: Card Readers
+    4. Internet of Things: lightbulbs, thermostats, refrigerators, doorbells, all kinds of things. 
+    5. Security Cameras: IP based, or wireless
+    6. Industrial Controls SCADA systems: used in a factory for central server 
 
 
 
@@ -935,7 +979,7 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
     1. Gets DHCP reservations
     2. Can use MAPs to see maps. 
     3. Can set up alerts 
-* [[Wireless]]
+* Wireless
 1. Green: has two differnet vlans
 2. Purple: lift scanners
 3. Blue: old lift scanners
