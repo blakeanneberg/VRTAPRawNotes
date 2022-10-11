@@ -863,6 +863,26 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
 * Load balancer: can be virtual with virtual IP address VIP
 * Hypervisor runs all the virtual servers, data network and virtual servers, network function virtualization.
 
+== Network Monitoring ==
+* Sends out messages asking status of all the different systems and allows us to alert when a device goes down, or a link goes down, or something that is broken of the network
+    1. performance metrics and sensors
+    2. interface statistics 
+    3. interface erros or alerts
+    4. environmental factors/sensors
+    5. device uptime/downtime (UPS fails) 
+* Network Monitor server, Observium Server   
+    1. Devices, Ports, Statuses, Map, uptime, processor spikes and memory in traffic, traffic though switch, status of ports and VLAN traffic, speed and duplex, packets (broadcast is ARP, multicast other traffic, VOIP seeing latency and jitter, temperature, errors 
+    2. Event Logs: interface changes
+    3. Layer 2 Errors
+        * Giant: Means ethernet frame exceeds the MTU, bigger than 1500 bytes by default. Can enable Jumbo Frames, eleminate giants. Giants are a message that is too large, switch will throw away.
+        * Runt: message that is too tiny, cant be processed and show up as error.
+        * Encapsulation error: expecting non-tagged frame and it showed up as tagged frame. 
+        * CRC Error: cyclical redundancy check that is part of the frame header itself. so the CRC algorithm pushes out a 32 bit value, attach it to the frame in the FCS field and send it. Frame could be tampered with, or looses data as it travels near a florsient lite, and then throw frame away and let other protocls figure out that the frame needs to be re-sent. 
+* Facilities Monitoring: check where we have places where we have networking gear
+    * building room temperature
+    * humidity
+    * electrical status
+    * floods sensors
 
 ==Corporate and Data Center Architectures==
 * 3 Tier Design
@@ -985,6 +1005,6 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
 3. Blue: old lift scanners
 4. Red: going away, wireless infogenissis access,
 5. EmployeeDevice being replaced: for emplyee cell phones, new password changed every year.
-6. Slate: for vail devices, tempertare sensors, i9's ipads, each device has own password to its mac address
+6. Slate: for V. devices, tempertare sensors, i9's ipads, each device has own password to its mac address
        
-
+t
