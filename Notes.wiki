@@ -51,6 +51,8 @@
                 - [[#Network Concepts#Network Services#Blank Area Networks#Network Classifications|Network Classifications]]
             - [[#Network Concepts#Network Services#WAN Technologies|WAN Technologies]]
             - [[#Network Concepts#Network Services#Virtualed Networks|Virtualed Networks]]
+        - [[#Network Concepts#Network Monitoring|Network Monitoring]]
+        - [[#Network Concepts#Collecting Network Monitoring Data|Collecting Network Monitoring Data]]
         - [[#Network Concepts#Corporate and Data Center Architectures|Corporate and Data Center Architectures]]
         - [[#Network Concepts#Cloud Services|Cloud Services]]
             - [[#Network Concepts#Cloud Services#Public, Private, Hybrid, Community Clouds|Public, Private, Hybrid, Community Clouds]]
@@ -62,6 +64,7 @@
     - [[#Smart Hands Training|Smart Hands Training]]
         - [[#Smart Hands Training#Switches|Switches]]
         - [[#Smart Hands Training#Accessing a switch|Accessing a switch]]
+
 
 
 
@@ -883,6 +886,28 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
     * humidity
     * electrical status
     * floods sensors
+
+
+
+== Collecting Network Monitoring Data ==
+* Baselining: highlights traffic, processor utilization, memory, interface 
+* SNMP Simple Network Management Protocol 
+    1. Observium server uses SNMO to collect data about the devices
+    2. SNMP Manager and SNMP Agent
+        * Devices on the network
+        * Configure devices with Community String and the IP address of the SNMP server/Manager to all for them to talk with each other. 
+        * Management Information Base MIB: database of device properties. 
+        * Object Identifiers OID or MIB Number: number device is programmed with, so SNMP server knows about all devices. 
+        * SNMPv2c: community string to authenticate, read only or read write access with a community string, dangerious if compromised. Added bulk data collection mechanism. 
+        * SNMPv3: SNMP which is encrypted, SNMP View limits amount of OID numbers,authenticates devices and provides different levels of security. Set up username of certain MIBs  
+    3. TRAP 
+        * tells when a device goes down or comes back up, send message to SNMP manager saying interface went down. report that to software and report that to admin. 
+    4. WALK the tree: 
+        * When configuring Observium server, manually add each device on network, and configure all devices with SNMP config info. Walk the tree is SNMP manager sends out request to all devices to send back everything to report. 
+        * 
+
+
+
 
 ==Corporate and Data Center Architectures==
 * 3 Tier Design
