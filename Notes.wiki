@@ -899,13 +899,32 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
         * Management Information Base MIB: database of device properties. 
         * Object Identifiers OID or MIB Number: number device is programmed with, so SNMP server knows about all devices. 
         * SNMPv2c: community string to authenticate, read only or read write access with a community string, dangerious if compromised. Added bulk data collection mechanism. 
-        * SNMPv3: SNMP which is encrypted, SNMP View limits amount of OID numbers,authenticates devices and provides different levels of security. Set up username of certain MIBs  
+        * SNMPv3: SNMP which is encrypted, SNMP View limits amount of OID numbers,authenticates devices and provides different levels of security. Set up username of certain MIBs, encripted 
     3. TRAP 
         * tells when a device goes down or comes back up, send message to SNMP manager saying interface went down. report that to software and report that to admin. 
     4. WALK the tree: 
         * When configuring Observium server, manually add each device on network, and configure all devices with SNMP config info. Walk the tree is SNMP manager sends out request to all devices to send back everything to report. 
-        * 
-
+    5. Netflow
+        * Collecting info about whats happening on the devices via a snapshop.
+            * Source and Destination IP addresses, source and destination ports, other info in frame, packet and segment headers, and sends it to NetFlow server. 
+        * Good for baselining, could detetect a spike in SSH traffic on network 
+    6. Syslog
+        *  Uses as much as SNMP in order to collect critical info of what happening on network
+        * in Observium server case its acutally Observium can be syslog server and SNMP server, and alot of logging soliutions may incorprorate it, or see other centrialized logging system  
+        * Syslog Server: requires NTP network time protocol or else does not work, so events get recoreded in correct order.   
+        * Syslog protocol is application layer protocol when event happens on device, it sends message to syslog server, syslog server, puts message in database so human can look at it. 
+        * Trace back events in network: Traffic Logs (how much traffic is flowing in and out similar to NetFlow), Audit Logs (who made a change, username and commands made), Syslog (stuff that happens on the device, set differnet logging levels). 
+        * Logging Levels, programmed with OS itself, use logging levels to tell syslog server to alert Admin:
+| Level | Severity      | Meaning                                                                                                           |
+| ----- | -----         | ----                                                                                                              |
+| 0     | Emergency     | EX: processor reached 100% and overheating                                                                        |
+| 1     | Alert         | EX: primary connection went down                                                                                  |
+| 2     | Critical      | EX: Failure in some service inside of the device                                                                  |
+| 3     | Error         | EX: Port receved bad message and went into error disabled state                                                   |
+| 4     | Warning       | EX: running out of memery                                                                                         |
+| 5     | Notice        | EX: Informational message.                                                                                        |
+| 6     | Informational |                                                                                                                   |
+| 7     | Debug         | Troubleshooting, shows whats happening, can overwhelm device, so keep debug off unless specifc issue is debugging |
 
 
 
@@ -1032,4 +1051,4 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
 5. EmployeeDevice being replaced: for emplyee cell phones, new password changed every year.
 6. Slate: for V. devices, tempertare sensors, i9's ipads, each device has own password to its mac address
        
-t
+
