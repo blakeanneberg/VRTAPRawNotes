@@ -926,7 +926,10 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
 | 6     | Informational |                                                                                                                   |
 | 7     | Debug         | Troubleshooting, shows whats happening, can overwhelm device, so keep debug off unless specifc issue is debugging |
 
-
+== IT Documentation ==
+* Plans and Procedures
+* Security and Device Policies
+* Agreements
 
 ==Corporate and Data Center Architectures==
 * 3 Tier Design

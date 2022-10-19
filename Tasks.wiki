@@ -1,4 +1,4 @@
-= ComTIA N+ Path =
+= CompTIA N+ Path =
 | Title                                             | Length | Notes Link | Done |
 |---------------------------------------------------|--------|------------|------|
 | Network Concepts and Protocol                     | 5h3m   |            | YES  |
