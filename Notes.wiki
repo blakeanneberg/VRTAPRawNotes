@@ -53,6 +53,8 @@
             - [[#Network Concepts#Network Services#Virtualed Networks|Virtualed Networks]]
         - [[#Network Concepts#Network Monitoring|Network Monitoring]]
         - [[#Network Concepts#Collecting Network Monitoring Data|Collecting Network Monitoring Data]]
+        - [[#Network Concepts#IT Documentation|IT Documentation]]
+        - [[#Network Concepts#Network Drawings|Network Drawings]]
         - [[#Network Concepts#Corporate and Data Center Architectures|Corporate and Data Center Architectures]]
         - [[#Network Concepts#Cloud Services|Cloud Services]]
             - [[#Network Concepts#Cloud Services#Public, Private, Hybrid, Community Clouds|Public, Private, Hybrid, Community Clouds]]
@@ -64,7 +66,6 @@
     - [[#Smart Hands Training|Smart Hands Training]]
         - [[#Smart Hands Training#Switches|Switches]]
         - [[#Smart Hands Training#Accessing a switch|Accessing a switch]]
-
 
 
 
@@ -964,12 +965,28 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
         * Creating High Avilability networks
             * load balancer: distributes data to multiple differnet servers running the same service, redierect traffic. 
             * Using multiple load balancers: if one fails or needs software upgrade, still have other load balancer operating
-            * Load Balancers need to be connected to switches and connected to servers. Servers need to be connected to two loadbalancers each, using NIC teaming (network interface card)
-            
+            * Load Balancers need to be connected to switches and connected to servers. Servers need to be connected to two loadbalancers each, using NIC teaming (network interface card), and need layer three switches or routers and those need to be redundant (maybe 4) via multipathing (via routing protocols, load balances, layer 2 protocols), multipule paths to data center. 
+            * First Hop Redundancy Protocols, provoide redundant default gateway for routers:
+                * Hot Standby Routing Protocol HSRP
+                * Virtual Router Redundancy Protocol VRRP
+            * Redundant firewalls
+            * redundant ISP, fiber into different buildings or different parts of the building
+            * redundant power and batteries
+            * redundant heating, cooling, fire suppression (FM200 gas in datacenter)
         * Redundant data centers
+            * Hot site, ready for redundant backup
+            * Warm site 
+            * Cold site 
+            * Cloud data center
         * Backups
-        * Snapshots
+            * Backup Tapes 
+            * Snapshot: taking image of server, like a virtual server, points of time when system is working correctly, could abandon 
         * Service Level Agreement Terms
+            * Business Agreement for Service written in a contract, law suite if breached.  
+                * Mean Time to Repair MTTR: contract backed by additional services provided or some credit back for cost of downtime. 
+                * Mean time between failures MTBF
+                * Recovery Time Objective RTO
+                * Recovery Point Objective RPO: how much data can we not collect or lose before business is adversly affected
         * how to figure out what to do next 
     * business continuity plan
         * post disaster, how business continues to work without the IT system 
