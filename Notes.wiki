@@ -961,6 +961,15 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
             * desopose so and get rid of user data 
     * Incident Response plan
     * Disaster recovery plan
+        * Creating High Avilability networks
+            * load balancer: distributes data to multiple differnet servers running the same service, redierect traffic. 
+            * Using multiple load balancers: if one fails or needs software upgrade, still have other load balancer operating
+            * Load Balancers need to be connected to switches and connected to servers. Servers need to be connected to two loadbalancers each, using NIC teaming (network interface card)
+            
+        * Redundant data centers
+        * Backups
+        * Snapshots
+        * Service Level Agreement Terms
         * how to figure out what to do next 
     * business continuity plan
         * post disaster, how business continues to work without the IT system 
