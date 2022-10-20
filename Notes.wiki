@@ -86,7 +86,7 @@
             - SMTP: Send email from the server
     3. Authentication Protocols
         - LDAP & LDAPs
-    5. Network Service Protocols
+    4. Network Service Protocols
         - Dynamic Host Configuration Protocol DHCP, giving workstation an IP address when plugged into the network.
         - DHCP sends out 'offer message', containing:
             - IP Address
@@ -98,16 +98,16 @@
         - DNS/Nameserver: translate IP address to human readable. :54
         - DNS lookup on windows in CMD is nslookup
         - NTP: UTC time
-    7. Network Management Protocols
+    5. Network Management Protocols
         -  Telnet & SSH
         - Simple Network Management Protocol SNMP: allows devices to send simple messages back to server. - When SNMP server says 'walk the tree' it messages all devices on network with numbers called MIBs, management information base, to add to a table all the events happening on devices. 
             - SNMP Trap: when something happens on device, it sends message to SNMP server saying an event happened.
         - Syslog: mechanism to send logs on devices to a syslog server, so the event is recorded, like plugging something into a switch to make it active.
         - RDP: Remote Desktop Protocol, access GUI interface of headless computers. 
-    8. Audio and Visual Protocols
+    6. Audio and Visual Protocols
         - H.323: video and voice  
         - SIP: VOIP phones, transfers voice to a VOIP gateway
-    10. Database Protocols 
+    7. Database Protocols 
         - SQL Databases: 
             * Servers
                 - mySQL: open source
@@ -363,7 +363,7 @@
 | 6 Green        | 6- Recieve -  | 6 Orange Rx       |
 | 7 White/Brown  | None          | 7 White/Brown     |
 | 8 Brown        | None          | 8 Brown           |
-            5. Categories
+            1. Categories
 | Cabling Type | Use                        | Ethernet Designation | Name              |              |
 |--------------|----------------------------|----------------------|-------------------|--------------|
 | Cat 1        | Doorbell                   |                      |                   |              |
@@ -374,7 +374,7 @@
 |              |                            | 1Gbps                | GigabitEthernet   | Full Duplex  |
 | Cat 6a/Cat 7 | 10 Gigabit Ethernet        | 10GBaseT             | 10GigabitEthernet | Full Duplex  |
 | Cat 8        | 40 Gigabit Ethernet        | 40GBaseT             | 40GigabitEthernet | Full Duplex  |
-            6. Auto MDI-X (Auto Medium Dependent Interface Crossover) so you can use any kind of cable, straight through or crossover
+            1. Auto MDI-X (Auto Medium Dependent Interface Crossover) so you can use any kind of cable, straight through or crossover
     * Coaxial Cabeling
         1. Cable TV/Cable Internet is RG-6 with a F-Type connector
         2. Twinaxial Cabel/Twinax has 10GB or 40GB, often with network interface card built into the cable (SFPs), to connect switches, routers, servers or SANs together.
@@ -424,19 +424,19 @@
 |-------------|------------|-------------|-------------|----------|
 | Single Mode | LX         | 1270-1610nm | Single Mode | 70 km    |
 | Multi Mode  | SX         | 770-860 nm  | Multi Mode  | 1/2-1km  |
-        3. Optical Network Interface Cards (Optics, lasers)
+        1. Optical Network Interface Cards (Optics, lasers)
             * GBIC (old)
             * SFP (small form pluggable)
             * Plug into switch, server or other network device
             * QSFP and QSF+ (newer form of NIC cards, Q means Quad.)
             * Connectors( ST Connector, SC Connector, LC Connector, MTRJ Connector, FC Connector) 
             * Patch Panel, terminate in one spot then use shorter piece of fiber to plug into the pach pannel, to plug in to the SFP into the gear.
-        4. Connections: Angled physical contact (APC) or Ultra Physical Contact (UPC) 
-        5. Operation: light and data flow one way in one fiber and the other way, called Simplex Pair, with lasers and eyes on both ends. But can be one fiber, called Bidirectional with different wavelengths of light via WDM (Wave division Multiplexing). WDM works by using three different kind of UV lasers shining into a prism and creats a single stream of light, and then another prism breaking it out into each eye. 
-        6. Wave Division Multiplexing
+        2. Connections: Angled physical contact (APC) or Ultra Physical Contact (UPC) 
+        3. Operation: light and data flow one way in one fiber and the other way, called Simplex Pair, with lasers and eyes on both ends. But can be one fiber, called Bidirectional with different wavelengths of light via WDM (Wave division Multiplexing). WDM works by using three different kind of UV lasers shining into a prism and creats a single stream of light, and then another prism breaking it out into each eye. 
+        4. Wave Division Multiplexing
             * coarse wave division multiplexing, CWDM, and is passive. 
             * Dense Wave Division Multiplexing, Powered, longer distance, more wavelengths.
-        8. Fiber Ethernet Designation and Cabling Type  
+        5. Fiber Ethernet Designation and Cabling Type  
 | 100BaseFX                             | Multi Mode Fiber  |
 | 100BaseSF                             | Multi Mode Fiber  |
 | 1000BaseSX                            | Multi Mode Fiber  |
@@ -570,7 +570,7 @@ Example:
 | 11001011        | 00000000        | 01110001        | 00001010     |
 | 11111111        | 11111111        | 11111111        | 00000000     |
 | 255             | 255             | 255             | 0            |
-2. Subnet Mask
+1. Subnet Mask
 | Network Portion | Host Portion | Host Portion | Host Portion |
 |-----------------|--------------|--------------|--------------|
 | .               | .            | .            | .            |
@@ -578,7 +578,7 @@ Example:
 | 11001011        | 00000000     | 000000000    | 00000000     |
 | 11111111        | 00000000     | 00000000     | 00000000     |
 | 255             | 0            | 0            | 0            |
-3. Subnet Mask does not have to fall within the 8-bit boundary
+1. Subnet Mask does not have to fall within the 8-bit boundary
 | 10       | 0        | 0        | 10       |
 | 00001010 | 00000000 | 00000000 | 00001010 |
 | 11111111 | 11111111 | 11110000 | 00000000 |
@@ -601,7 +601,7 @@ Example:
 | 255             | 255             | 255             | 0            |
 
 
-2. _Broadcast Address_: 
+1. _Broadcast Address_: 
     - Identifier for all devices on a network.
     - It allows a sender to send a message to every single device on the network. 
     - Have all 1's in host portion
@@ -614,7 +614,7 @@ Example:
 | 255             | 255             | 255             | 0            |
 
 
-3. _Host Address_: 
+1. _Host Address_: 
     - Identifies unique device on a network. 
     - Identifies a unique device on the network, combo of network portion of address and host portion of address, where the host portion isn't identifying a network address nor the broadcast.  
     - Anything EXCEPT all binary 0's or 1's
@@ -928,8 +928,128 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
 
 == IT Documentation ==
 * Plans and Procedures
+    * Standard operating procedures: sometimes directly from the manufacturer
+        * Workflow: how it works and how we use it. 
+        * Technical Documentation 
+        * Contact Information: who supports software or support for vender 
+    * Change Managment 
+        * help desk 
+        * a way for engineers and analysts to communicate with each other about changes that are being made
+        * process for chaning IT system configurations
+        * Change management database
+        * Documentation
+            * example: upgrading hardware or modifying configuration
+            * this is the change that is being made on this day and time
+            * Effects on other systems, or notify other users of downtime
+            * Cross IT Discussion, just in case it effects other users you can see changes in one location 
+            * Post Change Verification, asking users if its still working
+            * Documenation for any changes that might have happened. 
+    * Systems life cycle
+        * describing analizing, designing and implimenting new IT systems 
+        * IT is usally a service-based organization within a company where, where users come to IT with a problem
+        * Analyze:  
+            * alyzing a problem that usually a non IT person is trying to solve 
+        * Design:
+            * after a solution is in mind, design the solution
+            * Making sure hardware is able to keep up with the solution 
+            * Looking at technical components, makeing sure we can implement it
+        * Implementation 
+            * build out the system and prepair them for use
+        * Utilize and support
+            * analyst to support the system and helpdesk 
+        * phase out and dispose 
+            * desopose so and get rid of user data 
+    * Incident Response plan
+    * Disaster recovery plan
+        * how to figure out what to do next 
+    * business continuity plan
+        * post disaster, how business continues to work without the IT system 
 * Security and Device Policies
+    * How users should behave how users behave with company hardware
+        * onboarding and offboarding  
+        * invintory controls
+        * security policy restrictions 
+        * 
+    * Security Policy
+    * On Boarding/Off Boarding
+    * Remote Access/BYOD 
+        * secure device
+        * varus scan
+        * malware scan
+        * username/password/passcode requirements
+        * cookies
+        * privacy concers? 
+    * Password Policy
+        * people that are in positions that have authority but dont have technical knowledge to understand it 
+        * password construction rules
+        * password expiration/change rules
+        * lost password rules
+        * NIST Recommendations: users choose passwords in predictable way, special characters, change passwords in predictable ways. 8 characheters, avoid spacs, encourage longer easy to remember passwords, avoid forcing special stuff in the password, no mandatory resets, ban common passwords, dont re-use passwords for non-work related purposes, uncourage use of password vaults/ramdom password generators, enforce registration for multi factor authentication
+    * Acceptiable use policy
+        * web browsing guidance/restrictions  
+        * software installations
+        * email communcation guidlines
+        * transfering data guidelines
+        * personal vs professional use
+        * consequences
+    * Data Loss Prevention
+        * Policy saying that dont do it
+        * tech: DLP data loss prevention poliicy, to scann data if its being sent out into the internernet. 
+    * Remote access policy/VPN Access/Remote Desktop Access/remote application access
 * Agreements
+    * non-disclosure agreement NDA 
+    * Service level agreement SLA
+    * memorandum of understanding MOU (users of the system and owners of the technology) 
+== Network Drawings ==
+* Data Center
+    * label Aisles (depending on hot and cold airflow) 
+    * Server Fronts will be pointing towards each other 
+    * Each rack will be labeled with ABC and skip O confused with 0
+    * Rack Diagram, 1 at bottom 24 at top. shows all equipment, Layer 3 switch, load balandcer, server 3, server 2, server 1, patch panel etc
+* IDF/MDF
+    * Main Distribution Frame MDF 
+        * from old phone lines 
+        * where we terminalte connections from outside the building 
+        * Fiber WAN Connections
+        * Single Mode Fiber
+        * Multi mode fiber to IDFs
+        * Network Hardware/Media Converters o
+        * Telephone Connections if you have old land lines which might have Telco T1, PRI, POTS etc
+        * VoIP: Maybe the MDF has VoIP gateway hardware connecting to to T1 or PRI, what connections are comeing into the facility 
+    * Intermediate Distribution Frame IDF
+        * IDF connects to MDF typically though multi mode fiber 
+        * Cat6 patch pannel: Network connections from users desks, connect users desktop to switch, which connects to MDF
+        * Patch Pannel have labels, floor number, room number, jack number 
+        * Network Switches, connect devices to connect all devices that are coming into patch pannel, connect to switch, and connect to multi mode fiber
+* Network Drawings
+    * Icons from cysco 
+    * Doesnt have to be a map, or giographical map
+    * which devices are connected together, and how they are connected together. 
+        * IP network listed
+        * IP addresses 
+        * Interfaces
+        * Device names
+        * how they are logically laid out
+        * Userful when using Trace Route to find path of message though the network, to troubleshoot issues
+    * Naming conventions
+        * Number of devices 
+        * Types of devices
+        * type/location of building
+* Other Docs
+    * Site Survey Reports for wireless coverage
+        * site survey of building materials
+        * create heatmap of wireless signals
+        * adjust power of APs to get coverage or add more APs
+        * 
+    * Audit assessment reports
+        * Secuirty audit/assessment
+        * invintory audit/assessment
+        * user access audit/assessment
+    * baseline configurations
+        * daily snapshot of configes, called configuration management. periodic records of device configuration
+        * usually a simple file of text
+        * put in central location, to compaire configations
+        * baseline configs for routers, switches and firewalls. 
 
 ==Corporate and Data Center Architectures==
 * 3 Tier Design
@@ -939,11 +1059,11 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
         * High speed connections
         * Few to no policies
         * Limit changes to make traffic flow fast 
-    3. Distribution
+    2. Distribution
         * Connecting/Distributin network to all Access layer devices (computers and switches) to Layer 3 switches or routers to take all access layer devices and connect them to redundant devices (multiple Layer 3 routers or multiple Layer 3 switches.
         * Filter traffic that is undesirable on network
         * Routing Policies and implement routing protocols to distribute network for high-speed paths that are redundant and resiliant though the network.  
-    4. Access
+    3. Access
         * Computers in a office networked to a switch,
         * Control access to network (policies on the switches)
 * Software Defined Networks SDN
@@ -953,10 +1073,10 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
     * North South communication: client goes into data center, goes out to client. 
     1. Application Layer
         * Where utilities and rulesets allow network to operate via polies (control traffic loads during peak times etc.) 
-    3. Control Layer
+    2. Control Layer
         * The configuration that is applied to SDN Controller is applied in Control Layer. 
         * Responsible for moving traffic arround, accepting the configuration from the administrator from the workstation there, giving right info like IP addresses via DHCP services. applying some access control rules to limit where traffic can go, and responsible for moving traffic to right right location at the most efficient way possible. 
-    5. Infrastructure Layer
+    3. Infrastructure Layer
         * Consitst of routers, switches, Layer 3 switches connected together with certain policies (routing and switching). 
         * Already has networking applied
         * Management Plane: mechanism of configuring, controlling and monitoring all devices on network via SDN Controller which will host all configurations that will get applied as an overlay to rest of hardware to make it easier to control and manipulate traffic. The configuration that is applied to SDN Controller is applied in Control Layer.
@@ -1011,11 +1131,11 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
 == Switches ==
 1. Patch pannel labeling
 * no standards in labeling
-2. Patch Pannels 
+1. Patch Pannels 
 * 48 or 24 ports, identifier label or switch room identifier
 * Patch cabels is a pach pannel to switch
 * Use toner to find patch pannel. 
-3. Ports on a switch
+1. Ports on a switch
 * Odds on top, evens on bottom
 * Switch stack number(1)/module number (0)/portnumber (GI is gigabit) 
 * 6-8-12 ports and 24-48 ports
@@ -1040,7 +1160,7 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
     * Build port: also an access port, port assigned to particular vlan
     * static access ports: are for the servers, where VM ware host connects to server 
     1. MAB: Mack Authentication, authenticated with MAC. Add the dynamic vlan setting so it goes on the correct network.  
-    3. Dot1X authentication: domain controllers, all computers should be using dot1x
+    2. Dot1X authentication: domain controllers, all computers should be using dot1x
 
 * Solarwinds
     1. Gets DHCP reservations
