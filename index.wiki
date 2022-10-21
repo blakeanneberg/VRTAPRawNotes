@@ -2,6 +2,7 @@
 	* [[Tasks]] -- Stuff to _do yesterday_!!
 	* [[Notes]] -- Stuff I learned.
 	* [[Scratchpad]] -- Stuff I took notes on.
+    * [[Neovim config]] -- Stuff that is in my config.
 
 == Links ==
 	* Pluralsight Network+ Course: https://app.pluralsight.com/course-player?clipId=88a2a568-8c4f-45a2-abcc-cdf13a8396e0

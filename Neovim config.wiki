@@ -1,0 +1,102 @@
+= Neovim config =
+'
+set nocompatible
+set spelllang=en
+set spellsuggest=best,9
+set number
+set clipboard+=unnamedplus
+" set cursorline
+" set cursorcolumn
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set nobackup
+set nowrap
+set incsearch
+set ignorecase
+set showcmd
+set showmode
+set showmatch
+set hlsearch
+set history=100
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+set autowrite
+set titlestring=%t
+set wrap
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+		  \,sm:block-blinkwait175-blinkoff150-blinkon175
+
+
+
+nnoremap <silent> <F11> :set spell!<cr>
+inoremap <silent> <F11> <C-O>:set spell!<cr>
+
+filetype plugin on
+syntax on
+filetype on
+filetype plugin on
+filetype indent on
+
+
+
+call plug#begin()
+" The default plugin directory will be as follows:
+" "   - Vim (Linux/macOS): '~/.vim/plugged'
+" "   - Vim (Windows): '~/vimfiles/plugged'
+" "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" " You can specify a custom plugin directory by passing it as the argument
+" "   - e.g. `call plug#begin('~/.vim/plugged')`
+" "   - Avoid using standard Vim directory names like 'plugin'
+"
+" " Make sure you use single quotes
+"
+" " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+"
+Plug 'itchyny/lightline.vim'
+"
+Plug 'vimwiki/vimwiki'
+" " Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+"
+" " Multiple Plug commands can be written in a single line using | separators
+ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"
+Plug 'ThePrimeagen/vim-be-good'
+" " On-demand loading
+ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+"
+" " Using a non-default branch
+ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+"
+" " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+ Plug 'fatih/vim-go', { 'tag': '*' }
+"
+" " Plugin options
+ Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+"
+" " Plugin outside ~/.vim/plugged with post-update hook
+ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"
+" " Unmanaged plugin (manually installed and updated)
+ Plug '~/my-prototype-plugin'
+ "
+Plug 'tpope/vim-fugitive'
+"
+" " Initialize plugin system
+" " - Automatically executes `filetype plugin indent on` and `syntax enable`.
+ call plug#end()
+
+
+"colorscheme"
+let g:lightline = {
+	      \ 'colorscheme': 'simpleblack',
+      \ }
+
+filetype plugin on
+syntax on
+'
