@@ -1185,8 +1185,14 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
     * MAC address tables of top switch will show Port example: 1 and mac address of each computer ex: DF 7B. and the Bottom switch will show Port example 1 and mac of the other computers on top switch, example: c2 a7 6e b3 3f 
     * Broadcast messages can be a problem, with broadcast storm with messages if all the switches are connected to each other. Spanning Tree Protocol stops these broadcast storms but not all switches have STP
     {{file:../labsetup.png}}
-    * `show mac address-table dynamic` or CAM table table, Content Addressable directory and show one port `show mac address-table interface f0/1` 
-    
+    * `show mac address-table dynamic` or CAM table table, Content Addressable directory and show one port `show mac address-table interface int f0/1` 
+    * KNow the IP address, find switchport: 
+        * no mapping on switch of IP address to switchport, as switch is layer 2 device, but all IP addresses are affilated with MAC addresses. 
+        * find out where 10.0.0.128 is plugged into the switch, go from that local network segment (have to be on the workstation that can ping from that local segment)
+        * look at AARP table on workstation, `arp -a`, show the mapping on the workstation of IP addresses to respective MAC addresses. 
+        * SSH into the Switch that the workstation is connected to. `show mac address-table ?` and the ? allows you to type the address `mac address-table address 000c.292d.9200` which will show into the port. Then look at the network map and see what switch is connected to that port and SSH into that new switch, and show the mac address of the new swich `show mac address-table address 000c.29ed.9200`
+        * `show cdp neighbor` will show all neighbors that are connected to the switch.
+ nd remember that MAC address eventually get forgotten in MAC address Tables   
 * 
 == Switch Configuration ==
 * Swtich Memory

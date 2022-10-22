@@ -8,9 +8,15 @@
 | Network Troubleshooting and tools                 | 3h49m  |            |      |
 
 = Cisco Specific Courses = 
-| Title                                 | Length | Notes Link | Done |
-|---------------------------------------|--------|------------|------|
-| *Ethernet Operation and Swich Config* | 3h33m  |            |      |
-| VLAN Operation and Configuation       | 2h22m  |            |      |
+| Title                                        | Length | Notes Link | Done |
+|----------------------------------------------|--------|------------|------|
+| *Ethernet Operation and Swich Configuration* | 3h33m  |            | YES  |
+| VLAN Operation and Configuation              | 2h22m  |            |      |
+
+= Other Courses = 
+| Title                                     | Length | Notes Link                                                                                  | Done |
+|-------------------------------------------|--------|---------------------------------------------------------------------------------------------|------|
+| *Building Vendor Relationships that work* | 1h26m  | https://app.pluralsight.com/library/courses/building-vendor-relationships/table-of-contents |      |
+| VLAN Operation and Configuation           | 2h22m  |                                                                                             |      |
 
 
