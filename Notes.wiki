@@ -1183,6 +1183,10 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
 * Smaller switches
 * Cascading Switches, connecting switches switches
     * MAC address tables of top switch will show Port example: 1 and mac address of each computer ex: DF 7B. and the Bottom switch will show Port example 1 and mac of the other computers on top switch, example: c2 a7 6e b3 3f 
+    * Broadcast messages can be a problem, with broadcast storm with messages if all the switches are connected to each other. Spanning Tree Protocol stops these broadcast storms but not all switches have STP
+    {{local:/home/blake/vimwiki/labsetup.png}}
+    
+* 
 = Switch Configuration ==
 * Swtich Memory
     * Bootstrap stored in EEPROM, OS operating stored in flash memoery, startup-config is stored in virtual NVRAM, running-config is stored in RAM
