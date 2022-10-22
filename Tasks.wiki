@@ -3,14 +3,14 @@
 |---------------------------------------------------|--------|------------|------|
 | Network Concepts and Protocol                     | 5h3m   |            | YES  |
 | Introduction to enterprise network infrastructure | 4h33m  |            | YES  |
-| Network Managment and Operations                  | 2h4m   |            |      |
+| *Network Managment and Operations*                | 2h4m   |            | YES  |
 | Network Security Basics                           | 2h58m  |            |      |
 | Network Troubleshooting and tools                 | 3h49m  |            |      |
 
 = Cisco Specific Courses = 
-| Title                               | Length | Notes Link | Done |
-|-------------------------------------|--------|------------|------|
-| Ethernet Operation and Swich Config | 3h33m  |            |      |
-| VLAN Operation and Configuation     | 2h22m  |            |      |
+| Title                                 | Length | Notes Link | Done |
+|---------------------------------------|--------|------------|------|
+| *Ethernet Operation and Swich Config* | 3h33m  |            |      |
+| VLAN Operation and Configuation       | 2h22m  |            |      |
 
 

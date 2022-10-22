@@ -1,5 +1,8 @@
+%title
 = Neovim config =
-`
+%date 
+
+{{{lua
 set nocompatible
 set spelllang=en
 set spellsuggest=best,9
@@ -99,4 +102,4 @@ let g:lightline = {
 
 filetype plugin on
 syntax on
-`
+}}}
