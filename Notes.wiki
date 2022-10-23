@@ -1166,6 +1166,56 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
 * Scalability:
 * Security
 
+=Network Troublehooting =
+== Irritive Troublehooting Methodology==
+1. Identify the problem
+    * Everyone has ego, and frusterations happen. 
+    * Talk and gather infomation. What can user can and cant do?
+    * Identify the symptions.
+    * Talk to other users and question users to figure out where issue is.
+    * Change Managment, see if a change made by IT caused the issue.
+    * Try and duplicate problem. If problem is not repeatable, dont disregard.
+    * Multiple Problems, multiple things happening? 
+2. Establish a theory of cause
+    * Use OSI model to identify where the issue. Which will tell where to look further. Figure out what protocols and systems are involved in the system.
+        * 7 Application Layer
+        * 6 Presentation Layer
+        * 5 Session Layer
+        * 4 Transport Layer
+        * 3 Network Layer
+        * 2 Data Link Layer
+        * 1 Physical Layer
+    * Check your ego. Keep an open mind 
+3. test the theory
+    * Avoid Breaking network, keep ego in check, take care to not break stuff
+    * Escalate to higher level 
+4. estabish a plan of action
+    * Examine required changes
+    * change managment, to communcate changes to the systems, which dont need appovial, examin plan of action
+    * Rollback plan, avoid a system wide action
+5. Implement a solution
+    * 
+6. Verify solution
+    * call to user to see if solution is good
+    * IT is a service based org, kind friendly and helpfull for users to do their job
+7. Document solution
+    *  
+
+== Identifying and troubleshooting cable issues ==
+
+| Cable Types and Distances |          |          |             |
+| cable type                | material | distance | bandwidth   |
+| -----------               | -----    | ----     | --------    |
+| Cat 5/6/7                 | Copper   | 100M     | up to 10Gb  |
+| Multi Mode SX             | Fiber    | 1km      | up to 100GB |
+| Single Mode LX            | Fiber    | 70 km    | up to 10Gb+ |
+
+* wired cable specifications and uses
+* common cable issues
+* copper cabling tools
+* fiber optic cabling tools
+* 
+
 = Smart Hands Training =
 == Switches ==
 1. Patch panel labeling
