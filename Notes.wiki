@@ -1,4 +1,4 @@
-== Contents ==
+= Contents =
     - [[#Network Concepts|Network Concepts]]
     - [[#OSI Model to Describe Network Operations|OSI Model to Describe Network Operations]]
         - [[#OSI Model to Describe Network Operations#Layer 7: Application Layer|Layer 7: Application Layer]]
@@ -8,7 +8,7 @@
         - [[#OSI Model to Describe Network Operations#Layer 3: Network Layer|Layer 3: Network Layer]]
         - [[#OSI Model to Describe Network Operations#Layer 2: Data Link Layer|Layer 2: Data Link Layer]]
             - [[#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Ethernet|Ethernet]]
-            - [[#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Wireless Ethernet Protols 802.11|Wireless Ethernet Protols 802.11]]
+            - [[#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Wireless Ethernet Protocols 802.11|Wireless Ethernet Protocols 802.11]]
             - [[#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Wireless Topologies and management|Wireless Topologies and management]]
             - [[#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Wireless Encryption|Wireless Encryption]]
             - [[#OSI Model to Describe Network Operations#Layer 2: Data Link Layer#Cellular Wireless|Cellular Wireless]]
@@ -62,10 +62,16 @@
             - [[#Network Monitoring#Cloud Services#Infrastructure as a service|Infrastructure as a service]]
             - [[#Network Monitoring#Cloud Services#Desktop as a service|Desktop as a service]]
         - [[#Network Monitoring#Cloud Benefits|Cloud Benefits]]
+    - [[#Network Troublehooting|Network Troublehooting]]
+        - [[#Network Troublehooting#Irritive Troublehooting Methodology|Irritive Troublehooting Methodology]]
+        - [[#Network Troublehooting#Identifying and troubleshooting cable issues|Identifying and troubleshooting cable issues]]
+        - [[#Network Troublehooting#CLI Utilities:|CLI Utilities:]]
+        - [[#Network Troublehooting#Network Software Utilities|Network Software Utilities]]
+        - [[#Network Troublehooting#Wireless troubleshooting and utilities|Wireless troubleshooting and utilities]]
     - [[#Smart Hands Training|Smart Hands Training]]
         - [[#Smart Hands Training#Switches|Switches]]
+        - [[#Smart Hands Training#Switch Configuration|Switch Configuration]]
         - [[#Smart Hands Training#Accessing a switch|Accessing a switch]]
-
 
 = Network Concepts =
 
@@ -1205,16 +1211,103 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
 
 | Cable Types and Distances |          |          |             |
 | cable type                | material | distance | bandwidth   |
-| -----------               | -----    | ----     | --------    |
+| ----                      | ----     | ----     | ----        |
 | Cat 5/6/7                 | Copper   | 100M     | up to 10Gb  |
 | Multi Mode SX             | Fiber    | 1km      | up to 100GB |
 | Single Mode LX            | Fiber    | 70 km    | up to 10Gb+ |
 
 * wired cable specifications and uses
-* common cable issues
+    * Max Bandwith is limited distancem not to mention max distance.  
+    * Crossover cabels will still work but might have to switch cables. 
+    * always try a different cable: damaged cable, bent pins, incorrect pinouts, incorrect cable type, open/short bent wires, bad port.  
+    * Punch down tool and cable test are your friends.
+    * Attenuation: when cable is too far
+    * EMI: effecting interference from electrial equipment, espically from floresent lights. 
+    * Crosstalk: 
+    * Cableing issues with ethernet switch: like when computer is set to half duplex and switch is full duplex, it will not work. o
+    * Rollover cable: Serial Port RS232 to Console Port of a router or switch, looks just like ethernet cable but is not. Sometimes is light blue. 
+    * Link lite on ethernet switch: green good, yellow perhaps bad. Just know the lights on the switch. No lights might mean something is wrong. 
 * copper cabling tools
+    * always try a different cable: damaged cable, bent pins, incorrect pinouts, incorrect cable type, open/short bent wires, bad port.  
 * fiber optic cabling tools
-* 
+    * Dirty ends: scratched or dirty might need to be cleaned, specifc training will be needed.  
+    * Fiber optic operation, use two seperate fibers to send data. TX/RX Reverse is when the cords are switched, link light will not blink. 
+      Transciver Mismatch: SX Transceiver and LX Transceiver will not communcate with eacher other. 
+    * OTDR Optical Time Domain Reflectometer: able to find how many meters in is the break/fault.
+    * Light meter: strength of signal. Will need loopback adapter to shine the light reflected back at the other end of the loop. 
+    * Fusion Splicer: put fiber into machine, put two ends and fuse them for one continues length. 
+* Other
+    * Multimeter: might use it to test electricy.  
+== CLI Utilities:==
+
+* Ping:
+    * Find out if remote device is online or offline. 
+    * Packet Internet Groper.
+    * Destination Host Unreachable: Router saying the host is not reachable. 
+    * Destination Network Unreachable: dont often get this message. 
+    * Transmit failed: Network cable is unpluggedo. 
+* Windows: `IPCONFIG` shows default gateway is the router. `ipconfig /all` is MAC addresses. 
+    * `route print` shows routing table. Shows IP addresses with mask and is on interface. Default route is when traffic is not on the main interface. 
+    * `arp -a` shows all messages sent to device, see dynamic addresses. `arp -d *` will clear arp table. ARP table will eventually clear out. 
+    * `route -n` avoids delay of DNS, shows critical info of router (default gateway) 
+        * Automatic Private IP address: 169.254.0.0 and is when something is wrong.
+* Traceroute/Tracert 
+    * Sends out packet to destination, makes a list of routers, and sometimes routers dont answer back, or skip.  
+    * Windows: `tracert -d 10.0.0.10` -d hides DNS for faster 
+* NMAP: application utility that can scan another remote system to see what ports are open and potentially scan for vunulabilities.
+    * `netstat -ano` run on the device, to see what ports are open.  
+* Linux: 
+    * `ifconfig` shows all interfaces on workstation and in it is `ens33` is the ethernet interface on the device and the IP address of the workstation is the `inet` address.  
+    * `Hostname`: 
+        * hostname is name of workstation 
+    * `NSLookup example.com`: looks up local machine for hostname or IP address, or change DNS server lookup by typing `nslookup example.com 8.8.8.8`
+    * `Dig`: gives DNS records`
+* PuTTY:  
+    * telnet 
+        * connect to router and click `show ip route` shows routing infomation and how to reach it. Also shows network interface cards, showing ethernet and unique network. O means the route was learned from OSPF, C mean static route and was manually configured. `show arp` shows arp table.  
+    * Router
+        * `show mac address-table` as switches dont have IP tables, maps port number to mac address. `show mac address-table address 00c.29fc.70a5` will tell you what switch port the mac address is connected to.   
+
+== Network Software Utilities == 
+* Packet Capture
+    * Wireshark adn WinPcap: capture all traffic from network interface card and analize infomation in wireshark on problem PC.
+        * show traffic only to and from router, user query: `ip.addr==192.168.10.1` 
+    * Port Mirror: option on some switches to take all traffic on one port and mirror it on another port to capture traffic with another device or PC. 
+    * Network Tap: device takes all traffic and sends traffic to another device. 
+* Capture Traffic using TCPDUMP on linux
+    * `tcpdump -v` v for verbose. doesnt have same analizing as wireshark 
+* Bandwith Testing: `iPef`CLI utility tests speed between two devices. `iperf -s` to start server and `iperf -c 10.0.0.100` starts testing speed of the other device. Otherwise use `fast.com`  
+* IP Scanning
+    * Utilities like Nmap, to scan a rang of IP addresses on the network. Good for finding a device and you dont know the IP address.  
+* TFTP: Software like Tftpd64, once you are in the router and switch, can use command `copy` to copy files to and from device with `copy tftp flash` 
+* Netflow: way of collecting data from switch or router to give snapshot of traffic. 
+
+== Wireless troubleshooting and utilities ==
+* Throughput is amout of data that we can transfer on any given signal. 
+* Negotiated speed: stronger the signal higher the speed, further away from signal lower data speed to prevent errors
+* Received Signal Strenght Indication RSSI, device measuring wifi signal
+* Effective isotropic radiated power EIRP: measurement on device itself, Radio power outpoot subtraceted by cord of signal loss, plus the antennas power give us decibles or dbs
+* Antennas
+    * Signal Polarization: if antena is horizontal it makes the signal vertical, if antenna is vertical it makes the signal horizontal.  
+    * Reflection: wireless signal might be reflected by the wall, or be absorbed, attena placement is crital. 
+    * Attenuation: when moving farther away from signal it 
+* Common wireless issues
+    * using wrong atenna like yagi for direction or a omni direction
+    * Frequency mismatch: 5.0 GHz (better cover with alot more channels) and 2.4GHz (only three channels, even though there are 13-14 available, use cahnnel 1, 6 and 11 becase in order to get 802.11 to work correctly we need 22 MHz of space to get wireless signals to work and transfer data where you need at least 5 channels of space to do that. need each AP on a different channel. or if you have two differenet SSIDs make sure each is on its own unique channel in that particual area,)
+    * Interference: 2.4 GHz makes water molicules spin from microwave, so use 5 GHz. are users complaining about microwaves ovens.  
+    * Channel overlaps: use a Spectrum Analyzer tool to view each frequency.  
+    * Wireless Coverage: In site surveys make sure you have enough coverage. 
+    * Channels: make sure all APs are not on the same channel, put each AP on its own channel (with 2.4 you can only use 3 cahnnels)
+    * Client Disassociation: weak signal or someother interference. See wireless controler to see what is goiung.
+    * AP Association Time: related to Client Dissociation, show controller how long a device can connected to the network.
+    * Channel Utilization: controler that preconfigures each AP. 
+* Configuraiton issues
+    * Wrong SSID  
+    * Wrong Passphrase password
+    * Security Mismatch
+    * Captive Protal issues
+
+
 
 = Smart Hands Training =
 == Switches ==
