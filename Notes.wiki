@@ -68,10 +68,14 @@
         - [[#Network Troublehooting#CLI Utilities:|CLI Utilities:]]
         - [[#Network Troublehooting#Network Software Utilities|Network Software Utilities]]
         - [[#Network Troublehooting#Wireless troubleshooting and utilities|Wireless troubleshooting and utilities]]
+    - [[#Troubleshooting common PC networking issues|Troubleshooting common PC networking issues]]
+    - [[#Troubleshooting Layer 7 and above issues|Troubleshooting Layer 7 and above issues]]
     - [[#Smart Hands Training|Smart Hands Training]]
         - [[#Smart Hands Training#Switches|Switches]]
         - [[#Smart Hands Training#Switch Configuration|Switch Configuration]]
         - [[#Smart Hands Training#Accessing a switch|Accessing a switch]]
+
+
 
 = Network Concepts =
 
