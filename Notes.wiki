@@ -1307,6 +1307,64 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
     * Security Mismatch
     * Captive Protal issues
 
+= Troubleshooting common PC networking issues = 
+* Wrong Cofiguation
+    * wrong gateway 
+        * can happen if a misconfigure or a issue with DHCP server when its not handing out default gateway.  
+    * wrong subnet mask
+        * will be a warning saying defualt gateway is not on the same network segments (sebnet) that is defined by the IP address and subnet mask.  
+    * IP address
+        * will be a warning saying defualt gateway is not on the same network segments (sebnet) that is defined by the IP address and subnet mask.  
+    * DNS
+    * Duplicate IPs
+        * strange consiquence, sometimes windows will assign it 169.254 address, or not give you an error. Cant ping gateway.  
+    * Duplicate MACs
+    * DHCP server issues
+        * strange consiquence, sometimes windows will assign it 169.254 addres
+        * DHCP server can run out of addresses to hand ou
+        * too many devices, hand out all avilable addresses and run out of addresses. change lease time on DHCP server to make the lease time shorter or add more addresses.  
+        * Rogue DNCP server, might show that you cannot ping your defualt gateway, can be attacker on network, or where a user tries to bring in their AP where it tries to give out addresses.
+    * getting `ipconfig` working again
+        * use `release` and `renew`to request DHCP server to give a new IP address. 
+* Layer 2 switch issues          
+   * Duplicate MACs
+       * `ipconfig /all` shows MAC physical Address, and this should be unique but can be changed.  
+       * Where pings to your the IP address of the computer arnt always going to work. 
+       * have to log into swich via cerial cabel and you will see a error saying that the mac address is flak=pping between ports ex Fa0/3 and port Fa0/1en 
+       * `show mac address-table add 000c.29fc.70a5` and see the two ports. So on a switch you cant have the same mac address on the same VLAN on 2 different ports at the same time. so you can change the VLAN the device is on by `config t` and select port `int f0/3` and switch ports `switchport access vlan 50` but you should not have duplicate mac addresses so this is not good anyway.
+    * Changing VLANS 
+        * use the ARP table to see what devices are on the VLAN. Use in command prompt `arp -a` to see what devices are on your broadcast domain. 
+        * `config t` 
+        * `int f0/1`
+        * `switchport access vlan 20`
+    * Speed/Duplex Mismatch: force the speed or duplex, happens on older devices, or could happen if port doesnt get reverted back to default config, when were done with the device. Device just wont link up on switch. 
+    * Spanning Tree Protocol not enabled, connecting two switches with two links, end up getting messages that spin around, and it never stops and it will shut the switch down.
+    * Optical Link Budget: minimun amout of light needed to make work. can be cauased by too many faults in the cord or put in patch pannel.
+    * Collisions: hubs only, but dont happen with switches, only hubs.
+    * Multicast: ghosting a pc, set up dozen of computers, but can overwhelm the network. 
+
+= Troubleshooting Layer 7 and above issues = 
+* Layer 3 routing issues
+    * Routing Loop: How IP routing works, destination IP address of the packet needs to be the IP of the destination server/computer. Routing tables will guide the way of the frame in routers. IF router is misconfigured, can mess up traffic in routing the packet back and forth. Fixed with TTL value, time to live, in IP protocol. Command prompt error will say 'ttl expired in transit' and tracert will show a ping between the two routers. 
+    * pinging the router will show that destination is not avilable. doing a `tracert -d` to the router willl show you where it stops. so try to SSH to the router, `show ip route` and the valuess with C is a direct connected route. if not there, add the route route, `config t` and `ip route 10.0.0.0 255.255.255.255.0 172.16.0.6` with the final IP being the router connected to the server we want to connect to. 
+* DNS issues
+    * `nslookup`  
+    * any address that starts with 10.somethiung is a private IP address and connect be routed. 
+    * `ipconfig /flushdns` will flush the dns records on the local computer
+* NTP and Certificate Issues
+    * Time: make sure the computer has correct time set.  
+* Firewall Restrictions 
+    * If you see a computer on the `arp -a` table, and you can ping the device at 10.9 but you cant ping 10.9 to the other device 10.30? The firewall might deny all other traffice going to device, but allow all trafic from computer and back to computer. You could create inbound rule on firewall. Ports only happen in layer 4 protocols, TCP and UDP.  
+    * BYOD challanges, users using their own device. Security, age and many issues. Or admin control over users device. 
+    * Licensed features issues: 
+    * Network perfromance issues. 
+
+
+
+
+
+
+
 
 
 = Smart Hands Training =

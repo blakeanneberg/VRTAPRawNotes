@@ -1,22 +1,25 @@
 = CompTIA N+ Path =
-| Title                                             | Length | Notes Link | Done |
-|---------------------------------------------------|--------|------------|------|
-| *Network Concepts and Protocol*                   | 5h3m   |            | YES  |
-| Introduction to enterprise network infrastructure | 4h33m  |            | YES  |
-| Network Managment and Operations                  | 2h4m   |            | YES  |
-| Network Security Basics                           | 2h58m  |            |      |
-| Network Troubleshooting and tools                 | 3h49m  |            |      |
+| Title                                             | Length | Notes Link                                                                                       | Done |
+|---------------------------------------------------|--------|--------------------------------------------------------------------------------------------------|------|
+| *Network Concepts and Protocol*                   | 5h3m   | https://app.pluralsight.com/library/courses/network-concepts-protocols-cert/table-of-contents    | YES  |
+| Introduction to enterprise network infrastructure | 4h33m  | https://app.pluralsight.com/library/courses/network-enterprise-infrastructure-introduction-cert  | YES  |
+| Network Managment and Operations                  | 2h4m   | https://app.pluralsight.com/library/courses/network-management-operations-cert/table-of-contents | YES  |
+| Network Security Basics                           | 2h58m  | https://app.pluralsight.com/library/courses/network-security-basics-cert/table-of-contents       |      |
+| Network Troubleshooting and tools                 | 3h49m  | https://app.pluralsight.com/library/courses/network-troubleshooting-tools-cert/table-of-contents | Yes  |
 
 = Cisco Specific Courses = 
-| Title                                        | Length | Notes Link | Done |
-|----------------------------------------------|--------|------------|------|
-| *Ethernet Operation and Swich Configuration* | 3h33m  |            | YES  |
-| VLAN Operation and Configuation              | 2h22m  |            |      |
+| Title                                        | Length | Notes Link                                                                                 | Done |
+|----------------------------------------------|--------|--------------------------------------------------------------------------------------------|------|
+| *Ethernet Operation and Swich Configuration* | 3h33m  | https://app.pluralsight.com/library/courses/ethernet-operation-switch-configuration/       | YES  |
+| VLAN Operation and Configuation              | 2h22m  | https://app.pluralsight.com/library/courses/vlan-operation-configuration/table-of-contents |      |
 
 = Other Courses = 
 | Title                                     | Length | Notes Link                                                                                  | Done |
 |-------------------------------------------|--------|---------------------------------------------------------------------------------------------|------|
 | *Building Vendor Relationships that work* | 1h26m  | https://app.pluralsight.com/library/courses/building-vendor-relationships/table-of-contents |      |
-| VLAN Operation and Configuation           | 2h22m  |                                                                                             |      |
+| VLAN Operation and Configuation           | 2h22m  | https://app.pluralsight.com/library/courses/vlan-operation-configuration/table-of-contents  |      |
 
 
+= Questions =
+* Reccomend any virtual switch config enviroments? 
+* How to read out a port again?
