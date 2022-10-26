@@ -1,4 +1,4 @@
-= Contents =
+= [[Contents]] =
     - [[#Network Concepts|Network Concepts]]
     - [[#OSI Model to Describe Network Operations|OSI Model to Describe Network Operations]]
         - [[#OSI Model to Describe Network Operations#Layer 7: Application Layer|Layer 7: Application Layer]]
@@ -74,7 +74,6 @@
         - [[#Smart Hands Training#Switches|Switches]]
         - [[#Smart Hands Training#Switch Configuration|Switch Configuration]]
         - [[#Smart Hands Training#Accessing a switch|Accessing a switch]]
-
 
 
 = Network Concepts =
@@ -1362,7 +1361,6 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
     * BYOD challanges, users using their own device. Security, age and many issues. Or admin control over users device. 
     * Licensed features issues: 
     * Network perfromance issues. 
-
 
 
 
