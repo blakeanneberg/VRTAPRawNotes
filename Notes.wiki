@@ -75,6 +75,9 @@
         - [[#Smart Hands Training#Switch Configuration|Switch Configuration]]
         - [[#Smart Hands Training#Accessing a switch|Accessing a switch]]
 
+
+
+
 = Network Concepts =
 
 = OSI Model to Describe Network Operations =
