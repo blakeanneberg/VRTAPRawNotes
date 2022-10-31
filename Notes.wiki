@@ -399,14 +399,14 @@
 |-------------------------|--------------------|---------|----------------|---------|
 | FFFF FFFF FFFF          | 48 Bits            | 16 Bits | MAX 1500 Bytes | 32 Bits |
             * Flooding: when destination MAC address of the frame is not in the MAC address table, the frame is sent out to all active interfaces, except receiving interface
-        4. Broadcast Domain
+        1. Broadcast Domain
             * Group of networked devices which all receive a layer 2 broadcast message. 
-        5. Connecting Switches (is basically daisy chaining them together)
+        2. Connecting Switches (is basically daisy chaining them together)
             * Broadcast storm: clogs and overwhelms switches. So don't connect switches more than twice, or disable the port so one connection is there.
             * Spanning Tree Protocol: shuts down one of the links, so broadcast messages do not repeat in loop. Works with multiple switches.
             * SHOW SPANNING TREE
             * Port Aggregation (Extra bandwidth/Redundancy) via Link Aggregation Control Protocol LAC (open source) 
-        6. VLANs
+        3. VLANs
             * Broadcast Domain: do not have computers on with multiple layer 3 networks connected directly/whithin one single layer 2 broadcsat domain connected with a switch (eg 10.0.0.10/24 and 172.16.0.77/24). This is becuase if one device sends out a frame with a destination MAC address of all F's, switch going to forward the frame to all the other active portson the switch except for the port where the broadcast message was received. Also switches cannot directly comuncate with multiple layer 3 networks without a router in the middle.  
                 * boradcast domain is a layer 2 function (all the F's in the destination MAC address is a braodcast message) that relates to a layer 3 property in that all the devices in order to work propery in a broadcast domain must have the same network portion of the address
             * VLANS: Joining two networks (or broadcast domains) with a switch, you can assign ports to be a specific VLAN, creating a little mini switch within the switch, so you only forward traffic to intended devices.
@@ -504,15 +504,44 @@
                     * `exit`
                     * `show ip route` shows the network and gateway 
                     * `show run` you can see interface set up switchport, meaning its a layer 2 port, cannot configure layer three, unless you tell the interface to be a layer3 switchport
-            * Troubleshooting vlans: 
-                * Missing VLANS on switch 1 and switch 2: `show vlan` to see what is active, and if they are not assigned to any ports you will not see anything in the `show int trun` and to add you need to go to the port `switchport mode access` and then `switchport access vlan10` and then `int f0/2` and then `switchport mode access vlan 20` and then `exit`. then configure trunk port: `int f0/10` and `switchport mode trunk` and then `switchport trunk allowed vlan 10,20` and then to verify it worked, `show vlan` to see vlan and ports, and `show interface trunk` see ports f0/10 is configured as a trunk port. When your configuring the second switch, and you do `show vlans` and not see anything excpt for defualt, and then you go into configure `config t`, `switchport mode trunk`, `switchport trunk allowed vlan 10,20`, `exit`, and then check in `show int trunk` to see what ports are assinged to what trunks, but in `show vlan` you dont see the vlans configured...just leave the vlan database blank and not add is fine, so now configure the port `config t`, int `g0/1`, `switchport mode trunk`, `switchport trunk allowed vlan 10,20`, `exit`, `exit`, and then `show int trunk`you will now see the trunk link.  
-                * Missing VLANs on Layer 3 Switch: `default interface f0/1` to remove any preconfigured settings for the port or use `default interface range f0/2 - 4`, and `do show run` willl show all the interfaces are default.  `show IP route` will show vlans that are set. `show runs` will show commands to make the layer 3 switch behave like a layer 3 switch. `ip routing` will show all ip routes, but command `no ip routing` will clear default gateway, and nothing in the routing table, it means the layer 3 switch is currently configured to only work as a layer 2 switch, is a indication that IP routing is not enabled. to make it layer 3 switch do routing, `config t`, `ip routing`, `do show ip route`, it will show full routing. Configure g0/1 as trunk link: `int g0/1`, `switchport mode trunk` will show that the trunk enxapsulation is set to auto... so you need to do it manually, `switchport trunk encapsulation dot1q` and tells switchport not to set its encapsulation for the trunk link to auto but exclusively use the 802.1q protocol. so now you can do `switchport mode trunk` just fine, and `switchport trunk allowed vlan 10,20`, and then `exit` and do `show int trunk` to see all vlans and and ports
-                * Issues with missing vlans: `show CDP neighbors` will shows what connections are enabled. To add a vlan to a switch: `config t`, `vlan 10`, exit, `do show int vlan` to see what is active on the trunk. But Spanning tree protocol, prevents in layer 2, STP waits 30 seconds after changes to ports to allow that port moves from unknown network topology state into one where the switch is confident about the topology and brings up the port. To add another vlan to switch, login to it, and `vlan 20`, `exit`, and wait a bit and then you will seee it on `show int trunk`. If a switch does not have any access ports on it, Trunk ports dont care if VLAN is in the database or not. If its not in the database its not going to allow that VLAN to pass traffic though the switch, but when we configure the trunk links, it doesnt automatically add VLANs to the database. But if you go into `config t` and `int f0/19` and `switchport mode access` and add a new device to a vlan 40, `switchport access vlan 40` since we are assigning a new devices to a specific access port, switch automatically creates vlan 40 in the databas and `switchport mode access` and add a new device to a vlan 40, `switchport access vlan 40` since we are assigning a new devices to a specific access port, switch automatically creates vlan 40 in the database, ` do show vlan` you will see that VLAN 40 was added to database to `fa0/19`. Howver when you add VLANs to trunk links, it does automatically add VLANs to VLAN database. 
-                * Misconfigured Trunk Ports: 
-                    1. Workstattion can ping one default gateway but not another VLAN. See the issue when you forgot to add VLANs 10 and 20 to Switch2. 
-                    2. `show vlan` to see if vlans are correctly configured and assigned to correct ports.
-                    3. `show interface trunk` to see if vlans 10 and 20 are allowed in that trunk link and that they are currently active in the management domain and in a spannig tree forward state. 
-                * 
+                * Troubleshooting vlans: 
+                    * Missing VLANS on switch 1 and switch 2: `show vlan` to see what is active, and if they are not assigned to any ports you will not see anything in the `show int trun` and to add you need to go to the port `switchport mode access` and then `switchport access vlan10` and then `int f0/2` and then `switchport mode access vlan 20` and then `exit`. then configure trunk port: `int f0/10` and `switchport mode trunk` and then `switchport trunk allowed vlan 10,20` and then to verify it worked, `show vlan` to see vlan and ports, and `show interface trunk` see ports f0/10 is configured as a trunk port. When your configuring the second switch, and you do `show vlans` and not see anything excpt for defualt, and then you go into configure `config t`, `switchport mode trunk`, `switchport trunk allowed vlan 10,20`, `exit`, and then check in `show int trunk` to see what ports are assinged to what trunks, but in `show vlan` you dont see the vlans configured...just leave the vlan database blank and not add is fine, so now configure the port `config t`, int `g0/1`, `switchport mode trunk`, `switchport trunk allowed vlan 10,20`, `exit`, `exit`, and then `show int trunk`you will now see the trunk link.  
+                    * Missing VLANs on Layer 3 Switch: `default interface f0/1` to remove any preconfigured settings for the port or use `default interface range f0/2 - 4`, and `do show run` willl show all the interfaces are default.  `show IP route` will show vlans that are set. `show runs` will show commands to make the layer 3 switch behave like a layer 3 switch. `ip routing` will show all ip routes, but command `no ip routing` will clear default gateway, and nothing in the routing table, it means the layer 3 switch is currently configured to only work as a layer 2 switch, is a indication that IP routing is not enabled. to make it layer 3 switch do routing, `config t`, `ip routing`, `do show ip route`, it will show full routing. Configure g0/1 as trunk link: `int g0/1`, `switchport mode trunk` will show that the trunk enxapsulation is set to auto... so you need to do it manually, `switchport trunk encapsulation dot1q` and tells switchport not to set its encapsulation for the trunk link to auto but exclusively use the 802.1q protocol. so now you can do `switchport mode trunk` just fine, and `switchport trunk allowed vlan 10,20`, and then `exit` and do `show int trunk` to see all vlans and and ports
+                    * Issues with missing vlans: `show CDP neighbors` will shows what connections are enabled. To add a vlan to a switch: `config t`, `vlan 10`, exit, `do show int vlan` to see what is active on the trunk. But Spanning tree protocol, prevents in layer 2, STP waits 30 seconds after changes to ports to allow that port moves from unknown network topology state into one where the switch is confident about the topology and brings up the port. To add another vlan to switch, login to it, and `vlan 20`, `exit`, and wait a bit and then you will seee it on `show int trunk`. If a switch does not have any access ports on it, Trunk ports dont care if VLAN is in the database or not. If its not in the database its not going to allow that VLAN to pass traffic though the switch, but when we configure the trunk links, it doesnt automatically add VLANs to the database. But if you go into `config t` and `int f0/19` and `switchport mode access` and add a new device to a vlan 40, `switchport access vlan 40` since we are assigning a new devices to a specific access port, switch automatically creates vlan 40 in the databas and `switchport mode access` and add a new device to a vlan 40, `switchport access vlan 40` since we are assigning a new devices to a specific access port, switch automatically creates vlan 40 in the database, ` do show vlan` you will see that VLAN 40 was added to database to `fa0/19`. Howver when you add VLANs to trunk links, it does automatically add VLANs to VLAN database. 
+                    * Missing VLANS: TLDR: VLANs get added to database automatically when you assign them to an access port, and they do not get added automatically to the vlan when you assig them to the trunk port
+                    * Misconfigured Trunk Ports: 
+                        1. Workstattion can ping one default gateway but not another VLAN. See the issue when you forgot to add VLANs 10 and 20 to Switch2. 
+                        2. `show vlan` to see if vlans are correctly configured and assigned to correct ports.
+                        3. `show interface trunk` to see if vlans 10 and 20 are allowed in that trunk link and that they are currently active in the management domain and in a spannig tree forward state. 
+                        4. when you find a misconfigured trunk link, to fix it is `config t`, `int g0/1` and then `switchport trunk allowed vlan 10,20`
+                    * Changing the SVI state 
+                        *  `show ip int bri` shows brief summary of vlans and ip addresses 
+                        * You can go into config port and pick a port `int f0/11` a port that is not being used, `switchport mode access vlan 20`, but then activate the interface so just plug in anything to that port, while the switch goes though spanning tree, and we didnt have to add this to the trunk link. so all that was done was interface f0/11 changed state to up and moved VLAN interface VLAN 20 to up state as well. 
+                    * adding another VLAN and cut your arm off. 
+                        * SSH into a switch, to cause a problem to break connection.  
+                        * create new vlan: `show vlan`, `show run int f0/3`, `name newVLAN`, `exit`
+                        * cut off arm: `do show int trunk`, and you see all the vlans and ports and now going to add another vlan, so `switchport trunk allowed vlan 10,20,30` but to cut off arm it would be `switchport trunk allowed vlan 30`
+                        * To re-add arm: `switchport trunk allow vlan add 10`
+                        * To delete a arm: `switchport trunk allowed vlan remove 30`
+                        * DO NOT PANIC: grab your laptop, grap rollover cable, tell boss where your going and drive over to the layer 3 switch. Other thing you can do if the config is saved on the device remotly, is have someone at the remote location unplug the power cable from the switch, plug it back in again and then when the switch reboots it will have the old config on it where we change the trunk port to have the wrong VLAN
+                        * To re-add arm when connected via rollover cable: `show int trunk` and `config t` and `switchport trunk allowed vlan add 10,20` and `do show int trunk` and `exit` 
+                        * add vlan 30 config `show ip route` to see no 30 and then `conf t` and `int vlan 30`, and `ip address 192.168.0.1 255.255.255.0` and `no shut` and `exit`
+                    * Configure multiple interfaces: 
+                        * `do show int trunk` to show what is configred on the switch
+                        * `int range f0/12 , g0/1`  so it will configure both interaces 
+                        * `switchport trunk allowed vlan add 30` which will add vlan to the two interfaces
+                        * ping continuously `ping 10.0.0.1 -t` 
+                    * SSH into layer 3 switch 
+                        * use PUTTY, and as long as you can ping the IP you can SSH 
+                        * `do show int trunk` to see what is interfaced
+                        * and if you do not see vlan 30 you add it by typing `vlan 30` and give it a name  `newVLAN` and exit `exit`
+                    * SSH into layer 2 switch 
+                        * If you dont have any IP addresses you cannot SSH, make sure you  have IP addresses configured on the device, check all IPs `show ip int bri` 
+                        * configure IP address on switch, via routed network or via same VLAN we are connected to. Choose one VLAN (production vlan) or vlan where we always put IP address for the switch. Or create a seperate VLAN like `vlan 99` that is routed completely uniquely, basically its own broadcast domain, and use that one VLAN to assign IP addresses to all of the layer 2 devices, that way all layer 2 devices are always configured via its own seperate VLAN. Put access control lists to that VLAN to limit what traffic comes in and out of there.  
+                        * Go on switch 1 and switch 2 and simply create `int vlan 10` and give `ip address: 10.0.0.101 255.255.255.0` and `no shut` and `exit`:w
+                        * 
+                * wrong vlan on wrong interface 
+                    * verify configuration of device, or else you cannot pass traffic, so type in the switch `do show vlan` 
             * Storage on switch: 
                 * Stored in flash:/vland.dat 
                 * Putty: `show mac address-table`
@@ -533,8 +562,8 @@
 
             * Uses: Example separating VOIP traffic of phone Voice VLAN from regular Data VLAN for computer data.
              
-        7. Port Mirroring * Takes all the traffic and mirrors the traffic from the switch to another computer so you can analyze the traffic
-        8. Power over Ethernet PoE
+        1. Port Mirroring * Takes all the traffic and mirrors the traffic from the switch to another computer so you can analyze the traffic
+        2. Power over Ethernet PoE
             * power devices over the Ethernet line  
             * 802.3af (2003 15.4 watts DC Power)
             * 802.3at (2009 25.5 watts DC Power POE+)
@@ -1501,7 +1530,7 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
     * `show mac address-table dynamic` or CAM table table, Content Addressable directory and show one port `show mac address-table interface int f0/1` 
     * KNow the IP address, find switchport: 
         * no mapping on switch of IP address to switchport, as switch is layer 2 device, but all IP addresses are affilated with MAC addresses. 
-        * find out where 10.0.0.128 is plugged into the switch, go from that local network segment (have to be on the workstation that can ping from that local segment)
+        * find out where 10.0.0.128 is plugged into the switch, go from that local network segment (have to be on the workstation that can 
         * look at AARP table on workstation, `arp -a`, show the mapping on the workstation of IP addresses to respective MAC addresses. 
         * SSH into the Switch that the workstation is connected to. `show mac address-table ?` and the ? allows you to type the address `mac address-table address 000c.292d.9200` which will show into the port. Then look at the network map and see what switch is connected to that port and SSH into that new switch, and show the mac address of the new swich `show mac address-table address 000c.29ed.9200`
         * `show cdp neighbor` will show all neighbors that are connected to the switch.
