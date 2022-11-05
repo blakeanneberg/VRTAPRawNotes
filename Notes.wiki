@@ -1165,7 +1165,36 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
         * invintory controls
         * security policy restrictions 
         * 
-    * Security Policy
+    * Security Policy: CIA
+        * Need for IT Security: databases of Name, address, age, profession etc but also location, age, medical records, security cameras, travel behavior etc, makes data valuable. 
+        * Confidentiality: keep data priviate
+        * Integrity: keep data accurate, prevent tapeuring of info
+        * Availibility: make sure data is avilable for certain groups
+    * Threats:
+        * accidential (construction company cutting a fiber coard) and intentional 
+    * Vulnerabilities: Org called MITRE publishes a list of CVE Common Vulnerabilities and Exposures CVE.ORG, zero days are when the exploit is unknown.  
+    * Exploits: things that could be exploited  
+    * Reduce Exposure 
+        * Zero Trust: dont trust any devices untill you run them through policy and procedures:
+            * User Identity and authentication
+            * Device Identity and Authentication
+            * Policy Compliance Device Scan
+            *  Application Authorization access control
+                * Role based access: only have access to required systems 
+                * Least Privilege: Allow as little access as required, applies to system processes too
+                * Separation of Duties: Process require more than a single person
+                * Network Access Control: Authenticate User, Authenticate device, scan device, provide least privilege access, provide access based on role. 
+                * Network Segmentation: creating different VLANS, put a firewall to the device you are connecting to which is called Screened Subnet or DMZ. 
+                * Honypot: Hacker will get a database that is provided 
+                * Defense in Depth: Zero Trust, least privilege, role based access, network segmentation enforcement, screened subnets DNZ, network access control, honeypots 
+    * AAA Authenticiation Methods: 
+        * Authentication: Multifactor, username and password 
+        * Authorization: Privileges/Access Rights 
+        * Accounting: record of who did what when
+        * Server options: Cisco TACACS+ and IETF RADIUS protocols 
+        * Domain authentications, domain active directory server, sent via protocl called kerberos that sends username and password from client to server to validate device and username and password in encryption, sends tickets from user to server. LDAP lightweight directory access allow to use single username and password for multiple devices. SSO will allow for one username and pw for multiple systems. 
+    * Multifactor authentification: something you know, something you have, something you are, some where you are, something you do. 
+    * Access control, device sends UN and PW and switch sends it to LDAP or sends to TACAS or RADIUS server for auth to allow device on network, get auth then tells switch to open the port for connection. Wifi is controled via layer 2 access protocols 802.1x or EAP extensible authentication protocol or both. 
     * On Boarding/Off Boarding
     * Remote Access/BYOD 
         * secure device
@@ -1191,6 +1220,12 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
         * Policy saying that dont do it
         * tech: DLP data loss prevention poliicy, to scann data if its being sent out into the internernet. 
     * Remote access policy/VPN Access/Remote Desktop Access/remote application access
+
+
+
+
+
+
 * Agreements
     * non-disclosure agreement NDA 
     * Service level agreement SLA
