@@ -1266,8 +1266,62 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
             * Ransomware
             * DNS poisoning: send incoorect records onto DNS server
             * VLAN hopping: old by sending a bogus frame. no longer conserned about this. 
-
-
+     * Network Hardening Techniques 
+         * Securing Layer 2 
+             * new switches need to be configured, configure each port with specialized services 
+             * by default switches have preassigned VLANS to every single switch port, usually VLAN1, so need to abandon use of VLAN1
+             * Disable all unused switch ports
+             * Private VLANS, broadcast domain, virtual switch within a switch, so only devices that are on the VLAN hear the messages. Private VLANS are devices that are assigned its own unuque VLAN on the switch. Prevents ARP spoof and on path attach/man in the middle attack
+         * Port Security 
+             * each port listens for MAC address of the device that is connected and record it in database. when you disconnect the device with a MAC address that was recorded, and can deny traffic, and shut down switch and have admin check out what happened to the switch.  
+             * Configuring switch: log into switch, show configureation of port `show run int f0/1`, shows vlan and access port vs trunk, shows port security, shows how to make mac address sticky so it configures and assignes MAC address autiomacially when you plug the device into the port. so when you plug a different deivice into the port it shows the new device mac adddress and says `security violation occured, caused by MAC address 0024.9b09.41c9 on port FastEthernet0/1.` and will make the port into an error state. you can check by using `show int f0/1` and it will say `line protocol is down (err-disabled)` and then the admin has to go on the interface configuration to shut the port down and then bring up the port but will need to re-add the new MAC address. With the correct MAC adderss, you still need to shut down the port and reboot: `show int f0/1` and `config t` and `int f0/1` and `shutdown` and then `no shutdown` and `exit` 
+         * Rouge DHCP Servers
+             * label all switch ports as untrusted switchports for DHCP. But label the one single port that leads to the  Official DHCP server as as the trusted port.  
+         * Dynamic ARP Operation, ARP requests are MAC address for certain IP addresses and then device with correct MAC address will respond. DHCP Snooping Bindings are as each device gets its IP address from DHCP server, make tabel on switch, and map MAC address, IP address and Port. So DHCP Snooping Bindings allow for ARP inspections to work. Works with IPv6 but its called IPv6 router advertisement guard  
+         * Layer 3 and 4 Access Control Lists  
+             * Can enable lists on routers and firewalls  
+             * what information we will permit and what infomation to deny and criteria for that. Checks IP address in `permit host 10.0.0.10` and `implicity deny any` will block any IP address, vs explicitly deny any  
+             * Firewall: will need more phosicated access list, `permit any 192.168.10.10 eq 443` `implicit deny any any`and eq is port 443 is HTTPS.  
+             * Control Plane Policing: prevents DDOS, prevents traffic though routers and layer 3 switches and routers, and if there is a spike in traffic, start to deny traffic related to DNS
+         * Layer 7 
+             * Simple Network Management Protocol SNMP: use to collect info on devices and management server to change conif on devices. Each version of SNMP has a different version and each version has different security offered. Version 1 has no security. SNMPv2c has string to authenticate, and can configure device to read only or read write access. added bulk data collection. SNMPv3 allows access to only certain MIBs and encripts communication, and authenticatse device and server, and provides different levels of security based on view options that are configured.
+             * Software Updates with Firmware Updates, Operating system or software patches. 
+             * Netstat: open command prompt and use `netstat -ano` to identify connections and services. Then open Task Manager and click Serives and sort by Process ID and show what servies are running. `[::]` means its a IPv6 service. and `UDP 0.0.0.0:500` is a VPN service. So you can see all services that are running on local machine by using `netstat` command.  
+             * Password Security: Change default password. Make it reasonably complex. use Passowrd security guidlines. 
+        * Wireless Encryption 
+            * Wireless equivalent protocl 
+            * WPA 
+            * WPA2: 
+            * WPA3
+            * WPA-3 Enterprise is where you set up TACAS or RADIUS server with AD. 
+            * Even if your using encrypted traffic at Layer 7, your data traffic is still 100% unencrypted. 
+            * Authentication:
+                * Open Network Shared, dont do
+                * Pre shared key PSK
+                * EAP: Extensible Authentication Protocol, allows to send username and pw to TACACS server or RADIUS server then go check in AD to see if User is authorized to connect to server. 
+                * EAP-FAST
+                * PEAP: similar to EAP-FAST
+                * EAP-TLS
+                * PEAP-TLS
+                * MAC Filtering: easy to find MAC addresses, and can change and fake MAC addresses. easy to pass. 
+            * Geofencing can set up fake wifi signals for beyond walls of building  
+            * Client Isolation: clients can only talk to router and not other devices on network
+            * Additional SSIDs: put multiple SSIDs can send out multiple SSIDs. Captiv portal to have user log into wireless network 
+        * Remote Access:
+                * configure admin worstations with specific IP address on specific subnet and those subnets were allowed 
+                * Secure Shell SSH: CLI access to devices. 
+                * VPN: 
+                    * Site to Site to connect two locations together. Router/firewall to router/firewall. Typically uses IPSec. ` 
+                    * Remote Access VPN: Client VPN installed on workstation and manually connect. IPSec and Clientless SSL. Split Tunnel, some traffic goes over internet and some goes to corporate network. Full tunnel: all traffic goes to firewall first, so org can scan all traffic before going out to internet  
+                * RDP and VNC to remotely connect.
+                * Virtual Desktop: Need to enable Remote Desktop for each computer, but need Remote Desktop Gateway to control remote users. Virtual Desktop is a virtualized computer to remote to. Dont have to worry about remote users workstation. Used inside corporate network itsself  
+                * In/Out of band management, Network Management Options. Cutting your arm off when the network goes down. In Band is when you manage devices when network is up. When network is down called Out of Band, and can use dial up network to connect, or use a modem and firewall when network is down. 
+            * SSH: SSH using putty
+        * Physical Security:  
+            * Cameras 
+            * Motion sensors, cameras and lights
+            * Asset Tracking: know where each device is, asset tags, prevent users from opening computers, tamper stickers 
+            * Facility Access: card readers, secure access vestibule
 
 
 
