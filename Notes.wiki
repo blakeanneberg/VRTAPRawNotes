@@ -1197,7 +1197,11 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
     * Access control, device sends UN and PW and switch sends it to LDAP or sends to TACAS or RADIUS server for auth to allow device on network, get auth then tells switch to open the port for connection. Wifi is controled via layer 2 access protocols 802.1x or EAP extensible authentication protocol or both. 
     * On Boarding/Off Boarding
     * Remote Access/BYOD 
-        * secure device
+        * secure device   
+        * Access control, device sends UN and PW and switch sends it to LDAP or sends to TACAS or RADIUS server for auth to allow device on network, get auth then tells switch to open the port for connection. Wifi is controled via layer 2 access protocols 802.1x or EAP extensible authentication protocol or both. 
+    * On Boarding/Off Boarding
+    * Remote Access/BYOD 
+        * secure device   
         * varus scan
         * malware scan
         * username/password/passcode requirements
@@ -1209,6 +1213,33 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
         * password expiration/change rules
         * lost password rules
         * NIST Recommendations: users choose passwords in predictable way, special characters, change passwords in predictable ways. 8 characheters, avoid spacs, encourage longer easy to remember passwords, avoid forcing special stuff in the password, no mandatory resets, ban common passwords, dont re-use passwords for non-work related purposes, uncourage use of password vaults/ramdom password generators, enforce registration for multi factor authentication
+    * Security Assessments 
+        * Risks in IT  
+            * technical risks: internally and externally
+            * facilities risks: make sure IT infrastructure is security, switch closets are concern as as IT closets to be as secure as possible. IT is a critical component of the business and we need to start treating it that way. 
+            * human risks: most risk for ogs because of phishing, bad links, email attachments. but humans should be educated on 
+        * Assessing risks with reports
+            * Internal policies, procedures and processes 
+            * SIEM Security Information and Event Management 
+            * External Security assessment professional, business assessment professional 
+            * Threat Assessment
+                * what kind of org are you, what threats are specific for the group, what are the most serious threats and how to prevent those kinds of attacks 
+            * Vulnerability assessment
+                * vulnerability assessment of network design, faciliites are securied as best as we can, firewalls and servers are configured correctly and whether users have limited access for those servers or role based access to those servers 
+                * posture assessment: validate those deviceses that are on network to make sure they dont have viruses and have no un-approved software.
+                * Penetration Testing: hopefully not cause and outage and test the system and find out where the system is most vunerable. 
+        * NMAP
+            * tells what services are open and running on the server. 
+            * Check out Matt Glass course on NMAP 
+        * Business risk assessment, would the business be viable should an attack happen
+            * Examine policies and procedures
+            * verify policies are followed
+            * How to correct and realign to make sure 
+            * Assess vendor security posture. 
+        * SIEM Security Information and Event Management 
+            * rely on logging and SNMP collection  
+            * starts to corrolate events to generate reports, make sure users are doing things they should do, or find viruses outpreaks and track path.
+            * Generate audit reports to validate security of internal network.
     * Acceptiable use policy
         * web browsing guidance/restrictions  
         * software installations
@@ -1220,6 +1251,21 @@ Cant just randomly pick IP addresses and masks and apply it to networks. Do have
         * Policy saying that dont do it
         * tech: DLP data loss prevention poliicy, to scann data if its being sent out into the internernet. 
     * Remote access policy/VPN Access/Remote Desktop Access/remote application access
+    * Common Network Attacks. 
+        * Check out Dale Meredith series of courses that about certifed network hacking.  
+        * Human Exploits
+            * Social engineering: email phishing, impersonation, USB drives, tailgaiting, shoulder surfing 
+        * Technical attacks
+            * DOS attack  
+            * DDOS Distributed attack: spoofing what the attacker craft a message from IP that is not their own workstation, reflective is when a third party sends messages server which the server then sends messages to another computer which then floods the computer. Amplification sends DNS servers and sends messages to one computer, can wrangle IOT devices to send traffic to DNS servers which then funnel traffic to a target computer or network 
+            * Wifi Attacks: WAR driving and tries to get password or pre-shaired key. Rouge AP attacks: trick users to join the AP by sending a deauthorization request to another AP. Evil twin attack: buy pineapple and see what past networks your devices have connected to old networks and then connects to the old network. MAC spoofing: setting outside of network and watch traffic and capture mac addresses and potentially connect as a MAC address and join the network. 
+            * On Path Attack, or man in the middle attack: sends out ARP message that is spoofed, and fake a default gateway, and use trick certs and decrypt and re-incrypt traffic. 
+            * Roughe DHCP Server: can reply faster than the Official DHCP server even gets the request, then do a On Path Attack, to get traffic from a device. 
+            * Password Attacks: brute force attacks, critical to have a complex password. not have your password in rainbow tables
+            * Virus/malware
+            * Ransomware
+            * DNS poisoning: send incoorect records onto DNS server
+            * VLAN hopping: old by sending a bogus frame. no longer conserned about this. 
 
 
 
